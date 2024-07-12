@@ -69,7 +69,7 @@ export default function RootLayout({
     <head />
     <body
       className={cn(
-        "min-h-screen bg-background font-sans antialiased",
+        "bg-background font-sans antialiased",
         fontSans.variable
       )}
     >
@@ -80,7 +80,7 @@ export default function RootLayout({
         disableTransitionOnChange
       >
         <div vaul-drawer-wrapper="">
-          <div className="relative flex min-h-screen flex-col bg-background">
+          <div className="relative flex flex-col bg-background">
             {children}
           </div>
         </div>

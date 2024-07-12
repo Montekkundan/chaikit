@@ -1,0 +1,42 @@
+[
+  {
+    "templateName": "React Sanity Template",
+    "templateDescription": "This is a React template with Sanity CMS integration.",
+    "framework": "React",
+    "cms": "Sanity",
+    "id": "template-1",
+    "author": "Author1",
+    "imageUrl": "/chaikit.png",
+    "previewUrl": "https://example.com/template-1",
+    "githubUrl": "https://github.com/example/template-1",
+    "description": "This is a React template with Sanity CMS integration.",
+    "readmeLink": "https://github.com/chaikitxyz/slothmdx/blob/master/README.md",
+    "title": "React Sanity Template",
+    "slug": "react-sanity-template",
+    "usecase": "AI",
+    "css": "Tailwind",
+    "database": "MongoDB",
+    "authentication": "Auth0",
+    "analytics": "Google Analytics"
+  },
+  {
+    "templateName": "Vue Contentful Template",
+    "templateDescription": "This is a Vue template with Contentful CMS integration.",
+    "framework": "Vue",
+    "cms": "Contentful",
+    "id": "template-2",
+    "author": "Author2",
+    "imageUrl": "/chaikit.png",
+    "previewUrl": "https://example.com/template-2",
+    "githubUrl": "https://github.com/example/template-2",
+    "description": "This is a Vue template with Contentful CMS integration.",
+    "readmeLink": "https://github.com/chaikitxyz/slothmdx/blob/master/README.md",
+    "title": "Vue Contentful Template",
+    "slug": "vue-contentful-template",
+    "usecase": "Portfolio",
+    "css": "Bootstrap",
+    "database": "PostgreSQL",
+    "authentication": "Firebase",
+    "analytics": "Mixpanel"
+  }
+]
