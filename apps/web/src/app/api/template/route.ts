@@ -11,7 +11,7 @@ export const GET = async (req: NextRequest) => {
       if (!filters[key]) {
         filters[key] = [];
       }
-      filters[key].push(value);
+      filters[key]?.push(value);
     });
 
     let filteredTemplates: Template[] = templatesData;
