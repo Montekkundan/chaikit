@@ -2,6 +2,7 @@
 import { Command } from "commander";
 
 import { getPackageInfo } from "./utils/get-package-info.js";
+import sip from "./commands/sip.js";
 
 process.on("SIGINT", () => process.exit(0));
 process.on("SIGTERM", () => process.exit(0));
@@ -24,7 +25,7 @@ async function main() {
     .action(() => {
       console.log("Hello, world!");
     });
-
+  program.addCommand(sip);
   program.parse();
 }
 

@@ -33,17 +33,31 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "start:dev": "cross-env REGISTRY_URL=http://localhost:3000/__registry__/template.json node dist/index.js",
+    "test": "vitest run",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish",
+    "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
+    "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
+    "pub:release": "pnpm build && pnpm publish --access public"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.7",
     "@repo/typescript-config": "workspace:*",
     "@types/fs-extra": "^11.0.4",
-    "typescript": "latest"
+    "cross-env": "^7.0.3",
+    "typescript": "latest",
+    "vitest": "^2.0.2"
   },
   "dependencies": {
+    "@types/inquirer": "^9.0.7",
     "@types/node": "^20.14.10",
     "commander": "^12.1.0",
     "fs-extra": "^11.2.0",
+    "inquirer": "^10.0.1",
+    "node-fetch": "^3.3.2",
     "tsup": "^8.1.0",
     "type-fest": "^4.21.0"
   }
