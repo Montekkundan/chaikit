@@ -5,14 +5,13 @@ export interface Template {
     cms: string;
     id: string;
     author: string;
+    authorUrl: string;
     imageUrl: string;
     previewUrl: string;
     githubUrl: string;
-    description: string;
     readmeLink: string;
-    title: string;
     slug: string;
-    usecase: string;
+    usecase: string[];
     css: string;
     database: string;
     authentication: string;

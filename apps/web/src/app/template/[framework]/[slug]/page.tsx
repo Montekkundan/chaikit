@@ -3,8 +3,11 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Template as TTemplate } from '@/types/template';
 import templatesData from '@/registry/template.json';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const TemplatePage = () => {
   const pathname = usePathname();
@@ -28,18 +31,14 @@ const TemplatePage = () => {
         const [owner, repo] = repoUrl.pathname.split('/').slice(1, 3);
         const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/README.md`;
 
-        fetch(apiUrl, {
-          headers: {
-            Accept: 'application/vnd.github.v3.raw',
-          },
-        })
+        fetch(`/api/template/readme?apiUrl=${encodeURIComponent(apiUrl)}`)
           .then((response) => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
-            return response.text();
+            return response.json();
           })
-          .then((text) => setReadmeContent(text))
+          .then((data) => setReadmeContent(data.readmeContent))
           .catch((error) => {
             console.error('Error fetching README:', error);
             setError('Failed to load README content.');
@@ -59,25 +58,79 @@ const TemplatePage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center py-10">
-      <div className="w-full max-w-6xl bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden">
-        <div className="flex">
-          <div className="w-80 bg-gray-900 p-6 sticky top-0">
-            <h1 className="text-2xl font-bold mb-4">{template.title}</h1>
-            <p className="mb-4">{template.templateDescription}</p>
-            <div className="mb-4">
-              <div><strong>Framework</strong>: {template.framework}</div>
-              <div><strong>Use Case</strong>: {template.usecase}</div>
-              <div><strong>CSS</strong>: {template.css}</div>
-            </div>
-            <div>
-              <button className="w-full mb-2 py-2 bg-white text-gray-900 font-semibold rounded">Deploy</button>
-              <button className="w-full py-2 bg-white text-gray-900 font-semibold rounded">View Demo</button>
-            </div>
+    <div className="flex flex-col items-center py-10 container">
+      <div className="grid grid-cols-8">
+        <div className="px-8 py-8 sticky col-span-3 top-16 self-start">
+          <Link href='/template' className='text-secondary hover:text-primary'>
+            Back to Templates
+          </Link>
+          <h1 className="text-2xl font-bold my-4">{template.templateName}</h1>
+          <p className="mb-4">{template.templateDescription}</p>
+          <div className="mb-4">
+            <div><strong>Framework</strong>: {template.framework}</div>
+            <div><strong>Use Case</strong>: {template.usecase.join(', ')}</div>
+            <div><strong>CSS</strong>: {template.css}</div>
           </div>
-          <div className="flex-1 p-6 overflow-y-auto h-full">
-            <ReactMarkdown>{readmeContent}</ReactMarkdown>
+          <div>
+            <button className="w-full mb-2 py-2 bg-white text-gray-900 font-semibold rounded">Deploy</button>
+            <button className="w-full py-2 bg-white text-gray-900 font-semibold rounded">View Demo</button>
           </div>
+        </div>
+        <div className="px-8 py-8 col-span-5 overflow-auto border-l border-solid">
+          <div>
+            <Image
+              src={template.imageUrl}
+              alt={template.templateName}
+              width={300}
+              height={300}
+            />
+          </div>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h1: ({ ...props }) => <h1 className='text-4xl font-bold py-5'>{props.children}</h1>,
+              h2: ({ ...props }) => <h2 className='text-2xl font-bold py-5'>{props.children}</h2>,
+              ul: ({ ...props }) => <ul className='list-disc list-inside pb-5 pl-2'>{props.children}</ul>,
+              li: ({ ...props }) => <li className='mb-2'>{props.children}</li>,
+              p: ({ ...props }) => <p className='block'>{props.children}</p>,
+              a: ({ ...props }) => (
+                <a
+                  className='text-sky-500 underline'
+                  href={props.href}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  {props.children}
+                </a>
+              ),
+              table: ({ ...props }) => (
+                <table className='w-full text-left border-collapse my-6'>{props.children}</table>
+              ),
+              thead: ({ ...props }) => (
+                <thead>{props.children}</thead>
+              ),
+              th: ({ ...props }) => (
+                <th className='p-2'>{props.children}</th>
+              ),
+              tbody: ({ ...props }) => (
+                <tbody>{props.children}</tbody>
+              ),
+              tr: ({ ...props }) => (
+                <tr>{props.children}</tr>
+              ),
+              td: ({ ...props }) => (
+                <td className='p-2'>{props.children}</td>
+              ),
+              pre: ({ ...props }) => (
+                <pre className='bg-gray-800 text-white p-4 rounded-lg overflow-x-auto my-6'>{props.children}</pre>
+              ),
+              code: ({ ...props }) => (
+                <code className='  p-1 rounded'>{props.children}</code>
+              ),
+            }}
+          >
+            {readmeContent}
+          </ReactMarkdown>
         </div>
       </div>
       <div className="w-full max-w-6xl mt-10">

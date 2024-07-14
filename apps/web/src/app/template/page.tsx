@@ -11,7 +11,7 @@ import templatesData from '@/registry/template.json';
 
 const useCaseFilters = ["AI", "Portfolio", "Blog", "Ecommerce"];
 const frameworkFilters = ["React", "Vue", "Angular", "Svelte"];
-const cssFilters = ["Tailwind", "Bootstrap", "Material-UI", "Bulma"];
+const cssFilters = ["CSS","Tailwind", "Bootstrap", "Material-UI", "Bulma"];
 const databaseFilters = ["MongoDB", "PostgreSQL", "MySQL", "SQLite"];
 const cmsFilters = ["Sanity", "Contentful", "Strapi", "WordPress"];
 const authenticationFilters = ["Auth0", "Firebase", "JWT", "OAuth"];
@@ -35,68 +35,59 @@ export default function Home() {
     setCheckedState(initialCheckedState);
   }, []);
 
-  // Debounce function to prevent frequent updates
-  const debounce = (func: Function, wait: number) => {
-    let timeout: NodeJS.Timeout;
-    return (...args: any[]) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(...args), wait);
-    };
-  };
-
-  // Optimized useEffect with debouncing
   useEffect(() => {
-    const fetchTemplates = debounce(async () => {
+    const fetchTemplates = () => {
+      const hasActiveFilters = Object.values(filters).some(values => values.length > 0);
       const filteredTemplates = templatesData.filter(template => {
-        return Object.entries(filters).every(([key, values]) => {
+        if (!hasActiveFilters) return true; 
+  
+        return Object.entries(filters).every(([category, values]) => {
           if (values.length === 0) return true;
-          const templateValue = template[key as keyof TTemplate];
+          const templateValue = template[category as keyof TTemplate];
           if (!templateValue) return false;
-          return values.some(filter =>
-            templateValue.toString().toLowerCase().includes(filter.toLowerCase())
-          );
+  
+          if (Array.isArray(templateValue)) {
+            return values.some(filter => templateValue.includes(filter));
+          }
+          return values.includes(templateValue.toString());
         });
       });
+  
       setTemplates(filteredTemplates);
-    }, 300); // 300ms debounce wait time
-
+    };
+  
     fetchTemplates();
   }, [filters]);
+  
 
   const handleCheckboxChange = (category: string, value: string) => {
     setCheckedState(prev => ({
       ...prev,
       [category]: {
         ...prev[category],
-        [value]: !(prev[category]?.[value] ?? false)
+        [value]: !prev[category]?.[value]
       }
     }));
-  
+
     setFilters(prev => {
       const newFilters = { ...prev };
-  
       if (!newFilters[category]) {
         newFilters[category] = [];
       }
-  
-      const index = newFilters[category].findIndex(
-        item => item.toLowerCase() === value.toLowerCase()
-      );
-  
-      if (index !== -1) {
-        newFilters[category] = newFilters[category].filter((_, i) => i !== index);
+
+      if (newFilters[category].includes(value)) {
+        newFilters[category] = newFilters[category].filter(item => item !== value);
       } else {
-        newFilters[category].push(value);
+        newFilters[category] = [...newFilters[category], value];
       }
-  
+
       if (newFilters[category].length === 0) {
         delete newFilters[category];
       }
-  
       return newFilters;
     });
   };
-  
+
   const renderCheckboxes = (category: string, values: string[]) => (
     <ul className='space-y-4'>
       {values.map((value, valueIdx) => (
