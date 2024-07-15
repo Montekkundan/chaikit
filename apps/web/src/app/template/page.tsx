@@ -111,16 +111,19 @@ export default function Home() {
 
   return (
     <main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-      <div className='flex items-baseline justify-between pb-6 pt-24'>
-        <h1 className='text-4xl font-bold tracking-tight'>
+      <div className='flex flex-col items-center justify-center pb-6 pt-24 gap-y-6'>
+        <h1 className='text-6xl font-bold tracking-tight'>
           Find your Template
         </h1>
+        <p className="text-2xl text-gray-600" >
+          Jumpstart your app development process with pre-built solutions from Chaikit
+        </p>
       </div>
 
       <section className='pb-24 pt-6'>
-        <div className='grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4'>
+        <div className='flex flex-col md:flex-row w-full justify-center'>
           {/* Filters */}
-          <div className='hidden lg:block'>
+          <div className='hidden md:block w-56 mr-8'>
             <Accordion type='multiple' className='animate-none'>
               <AccordionItem value='usecase'>
                 <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
@@ -186,6 +189,82 @@ export default function Home() {
               </AccordionItem>
             </Accordion>
           </div>
+            {/* Mobile Filters */}
+      <div className='md:hidden w-full mb-8'>
+        <Accordion type='single' collapsible>
+          <AccordionItem className='px-6 border-b' value='filter'>
+            <AccordionTrigger className='py-3 text-sm '>
+              <span className='text-xl font-bold'>Filter by</span>
+            </AccordionTrigger>
+            <AccordionContent className='pt-6 animate-none'>
+              <Accordion type='multiple' className='animate-none'>
+                <AccordionItem value='usecase'>
+                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                    <span className='font-medium'>Use Case</span>
+                  </AccordionTrigger>
+                  <AccordionContent className='pt-6 animate-none'>
+                    {renderCheckboxes('usecase', useCaseFilters)}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value='framework'>
+                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                    <span className='font-medium'>Framework</span>
+                  </AccordionTrigger>
+                  <AccordionContent className='pt-6 animate-none'>
+                    {renderCheckboxes('framework', frameworkFilters)}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value='css'>
+                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                    <span className='font-medium'>CSS</span>
+                  </AccordionTrigger>
+                  <AccordionContent className='pt-6 animate-none'>
+                    {renderCheckboxes('css', cssFilters)}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value='database'>
+                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                    <span className='font-medium'>Database</span>
+                  </AccordionTrigger>
+                  <AccordionContent className='pt-6 animate-none'>
+                    {renderCheckboxes('database', databaseFilters)}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value='cms'>
+                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                    <span className='font-medium'>CMS</span>
+                  </AccordionTrigger>
+                  <AccordionContent className='pt-6 animate-none'>
+                    {renderCheckboxes('cms', cmsFilters)}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value='authentication'>
+                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                    <span className='font-medium'>Authentication</span>
+                  </AccordionTrigger>
+                  <AccordionContent className='pt-6 animate-none'>
+                    {renderCheckboxes('authentication', authenticationFilters)}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value='analytics'>
+                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                    <span className='font-medium'>Analytics</span>
+                  </AccordionTrigger>
+                  <AccordionContent className='pt-6 animate-none'>
+                    {renderCheckboxes('analytics', analyticsFilters)}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
 
           {/* Template grid */}
           <ul className='lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>

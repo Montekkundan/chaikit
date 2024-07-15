@@ -8,6 +8,8 @@ import { Template as TTemplate } from '@/types/template';
 import templatesData from '@/registry/template.json';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+import { CopyNpmCommandButton } from '@/components/copy-button';
 
 const TemplatePage = () => {
   const pathname = usePathname();
@@ -56,16 +58,22 @@ const TemplatePage = () => {
   if (!template) {
     return <div>Loading...</div>;
   }
-
+  const npmCommands = {
+    __npmCommand__: `npx chai sip ${template.slug}`,
+    __pnpmCommand__: `pnpm dlx chai sip ${template.slug}`,
+    __yarnCommand__: `yarn dlx chai sip ${template.slug}`,
+    __bunCommand__: `bun x chai sip ${template.slug}`
+  };
+  
   return (
     <div className="flex flex-col items-center py-10 container">
       <div className="grid grid-cols-8">
         <div className="px-8 py-8 sticky col-span-3 top-16 self-start">
-          <Link href='/template' className='text-secondary hover:text-primary'>
-            Back to Templates
+          <Link href='/template' className='text-secondary hover:text-primary flex items-center gap-1'>
+            <ArrowLeft className='h-4 w-4' /> Back to Templates
           </Link>
-          <h1 className="text-2xl font-bold my-4">{template.templateName}</h1>
-          <p className="mb-4">{template.templateDescription}</p>
+          <h1 className="text-6xl font-bold my-4 mb-6">{template.templateName}</h1>
+          <p className="my-4">{template.templateDescription}</p>
           <div className="mb-4">
             <div><strong>Framework</strong>: {template.framework}</div>
             <div><strong>Use Case</strong>: {template.usecase.join(', ')}</div>
@@ -74,6 +82,13 @@ const TemplatePage = () => {
           <div>
             <button className="w-full mb-2 py-2 bg-white text-gray-900 font-semibold rounded">Deploy</button>
             <button className="w-full py-2 bg-white text-gray-900 font-semibold rounded">View Demo</button>
+            <div className="relative">
+              <pre className='mb-4 mt-6 px-4 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900 flex justify-between items-center'>
+                <code>npx chai sip {template.slug}</code>
+                <CopyNpmCommandButton commands={npmCommands} className="ml-4" />
+              </pre>
+            </div>
+
           </div>
         </div>
         <div className="px-8 py-8 col-span-5 overflow-auto border-l border-solid">
@@ -133,12 +148,12 @@ const TemplatePage = () => {
           </ReactMarkdown>
         </div>
       </div>
-      <div className="w-full max-w-6xl mt-10">
+      {/* <div className="w-full max-w-6xl mt-10">
         <h2 className="text-xl font-bold mb-4">Related Templates</h2>
         <div className="flex space-x-4">
-          {/* Add related templates here */}
+          related
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

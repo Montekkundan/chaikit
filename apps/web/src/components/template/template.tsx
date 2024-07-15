@@ -10,15 +10,18 @@ interface TemplateProps {
 
 const TemplateComponent: React.FC<TemplateProps> = ({ template }) => {
   return (
-    <Link href={`/template/${template.framework.toLowerCase()}/${template.slug}`}>
+    <Link
+     className='flex justify-center'
+     href={`/template/${template.framework.toLowerCase()}/${template.slug}`}
+     >
       <div className='group relative border border-transparent hover:cursor-pointer hover:border-white rounded-md overflow-hidden max-w-xs'>
         <div className='w-full h-64 overflow-hidden'>
           <Image
             src={template.imageUrl}
             alt='product image'
-            className='w-full h-full object-cover object-center'
-            width={300}
-            height={300}
+            className='object-cover object-center'
+            width={400}
+            height={200}
           />
         </div>
         <div className='p-4 bg-black text-white'>
