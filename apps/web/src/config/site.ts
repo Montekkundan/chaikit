@@ -6,7 +6,7 @@ export const siteConfig = {
       "chai for everyone.",
     links: {
       twitter: "https://x.com/montekkundan",
-      github: "https://github.com/montekkundan/chaikit",
+      github: "https://github.com/chaikitxyz/chaikit",
     },
   }
   

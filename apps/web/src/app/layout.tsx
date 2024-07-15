@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/providers";
 import { fontSans } from "@/lib/fonts";
 import { Analytics } from "@/components/analytics";
 import { cn } from "@/lib/utils";
+import { SiteFooter } from "@/components/site-footer";
 
 
 export const metadata: Metadata = {
@@ -84,7 +85,7 @@ export default function RootLayout({
             {children}
           </div>
         </div>
-
+        <SiteFooter />
         <Analytics />
       </ThemeProvider>
     </body>
