@@ -1,7 +1,7 @@
 export const siteConfig = {
     name: "chaikit",
     url: "https://www.chaikit.xyz",
-    ogImage: "https://www.chaikit.xyz/og.jpg",
+    ogImage: "https://www.chaikit.xyz/og.png",
     description:
       "chai for everyone.",
     links: {
