@@ -11,7 +11,7 @@ import templatesData from '@/registry/template.json';
 
 const useCaseFilters = ["AI", "Portfolio", "Blog", "Ecommerce"];
 const frameworkFilters = ["React", "Vue", "Angular", "Svelte"];
-const cssFilters = ["CSS","Tailwind", "Bootstrap", "Material-UI", "Bulma"];
+const cssFilters = ["CSS", "Tailwind", "Bootstrap", "Material-UI", "Bulma"];
 const databaseFilters = ["MongoDB", "PostgreSQL", "MySQL", "SQLite"];
 const cmsFilters = ["Sanity", "Contentful", "Strapi", "WordPress"];
 const authenticationFilters = ["Auth0", "Firebase", "JWT", "OAuth"];
@@ -39,26 +39,26 @@ export default function Home() {
     const fetchTemplates = () => {
       const hasActiveFilters = Object.values(filters).some(values => values.length > 0);
       const filteredTemplates = templatesData.filter(template => {
-        if (!hasActiveFilters) return true; 
-  
+        if (!hasActiveFilters) return true;
+
         return Object.entries(filters).every(([category, values]) => {
           if (values.length === 0) return true;
           const templateValue = template[category as keyof TTemplate];
           if (!templateValue) return false;
-  
+
           if (Array.isArray(templateValue)) {
             return values.some(filter => templateValue.includes(filter));
           }
           return values.includes(templateValue.toString());
         });
       });
-  
+
       setTemplates(filteredTemplates);
     };
-  
+
     fetchTemplates();
   }, [filters]);
-  
+
 
   const handleCheckboxChange = (category: string, value: string) => {
     setCheckedState(prev => ({
@@ -121,7 +121,7 @@ export default function Home() {
       </div>
 
       <section className='pb-24 pt-6'>
-        <div className='flex flex-col md:flex-row w-full justify-center'>
+        <div className='flex flex-col md:flex-row w-full'>
           {/* Filters */}
           <div className='hidden md:block w-56 mr-8'>
             <Accordion type='multiple' className='animate-none'>
@@ -189,93 +189,105 @@ export default function Home() {
               </AccordionItem>
             </Accordion>
           </div>
-            {/* Mobile Filters */}
-      <div className='md:hidden w-full mb-8'>
-        <Accordion type='single' collapsible>
-          <AccordionItem className='px-6 border-b' value='filter'>
-            <AccordionTrigger className='py-3 text-sm '>
-              <span className='text-xl font-bold'>Filter by</span>
-            </AccordionTrigger>
-            <AccordionContent className='pt-6 animate-none'>
-              <Accordion type='multiple' className='animate-none'>
-                <AccordionItem value='usecase'>
-                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
-                    <span className='font-medium'>Use Case</span>
-                  </AccordionTrigger>
-                  <AccordionContent className='pt-6 animate-none'>
-                    {renderCheckboxes('usecase', useCaseFilters)}
-                  </AccordionContent>
-                </AccordionItem>
+          {/* Mobile Filters */}
+          <div className='md:hidden w-full mb-8'>
+            <Accordion type='single' collapsible>
+              <AccordionItem className='px-6 border-b' value='filter'>
+                <AccordionTrigger className='py-3 text-sm '>
+                  <span className='text-xl font-bold'>Filter by</span>
+                </AccordionTrigger>
+                <AccordionContent className='pt-6 animate-none'>
+                  <Accordion type='multiple' className='animate-none'>
+                    <AccordionItem value='usecase'>
+                      <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                        <span className='font-medium'>Use Case</span>
+                      </AccordionTrigger>
+                      <AccordionContent className='pt-6 animate-none'>
+                        {renderCheckboxes('usecase', useCaseFilters)}
+                      </AccordionContent>
+                    </AccordionItem>
 
-                <AccordionItem value='framework'>
-                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
-                    <span className='font-medium'>Framework</span>
-                  </AccordionTrigger>
-                  <AccordionContent className='pt-6 animate-none'>
-                    {renderCheckboxes('framework', frameworkFilters)}
-                  </AccordionContent>
-                </AccordionItem>
+                    <AccordionItem value='framework'>
+                      <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                        <span className='font-medium'>Framework</span>
+                      </AccordionTrigger>
+                      <AccordionContent className='pt-6 animate-none'>
+                        {renderCheckboxes('framework', frameworkFilters)}
+                      </AccordionContent>
+                    </AccordionItem>
 
-                <AccordionItem value='css'>
-                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
-                    <span className='font-medium'>CSS</span>
-                  </AccordionTrigger>
-                  <AccordionContent className='pt-6 animate-none'>
-                    {renderCheckboxes('css', cssFilters)}
-                  </AccordionContent>
-                </AccordionItem>
+                    <AccordionItem value='css'>
+                      <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                        <span className='font-medium'>CSS</span>
+                      </AccordionTrigger>
+                      <AccordionContent className='pt-6 animate-none'>
+                        {renderCheckboxes('css', cssFilters)}
+                      </AccordionContent>
+                    </AccordionItem>
 
-                <AccordionItem value='database'>
-                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
-                    <span className='font-medium'>Database</span>
-                  </AccordionTrigger>
-                  <AccordionContent className='pt-6 animate-none'>
-                    {renderCheckboxes('database', databaseFilters)}
-                  </AccordionContent>
-                </AccordionItem>
+                    <AccordionItem value='database'>
+                      <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                        <span className='font-medium'>Database</span>
+                      </AccordionTrigger>
+                      <AccordionContent className='pt-6 animate-none'>
+                        {renderCheckboxes('database', databaseFilters)}
+                      </AccordionContent>
+                    </AccordionItem>
 
-                <AccordionItem value='cms'>
-                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
-                    <span className='font-medium'>CMS</span>
-                  </AccordionTrigger>
-                  <AccordionContent className='pt-6 animate-none'>
-                    {renderCheckboxes('cms', cmsFilters)}
-                  </AccordionContent>
-                </AccordionItem>
+                    <AccordionItem value='cms'>
+                      <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                        <span className='font-medium'>CMS</span>
+                      </AccordionTrigger>
+                      <AccordionContent className='pt-6 animate-none'>
+                        {renderCheckboxes('cms', cmsFilters)}
+                      </AccordionContent>
+                    </AccordionItem>
 
-                <AccordionItem value='authentication'>
-                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
-                    <span className='font-medium'>Authentication</span>
-                  </AccordionTrigger>
-                  <AccordionContent className='pt-6 animate-none'>
-                    {renderCheckboxes('authentication', authenticationFilters)}
-                  </AccordionContent>
-                </AccordionItem>
+                    <AccordionItem value='authentication'>
+                      <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                        <span className='font-medium'>Authentication</span>
+                      </AccordionTrigger>
+                      <AccordionContent className='pt-6 animate-none'>
+                        {renderCheckboxes('authentication', authenticationFilters)}
+                      </AccordionContent>
+                    </AccordionItem>
 
-                <AccordionItem value='analytics'>
-                  <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
-                    <span className='font-medium'>Analytics</span>
-                  </AccordionTrigger>
-                  <AccordionContent className='pt-6 animate-none'>
-                    {renderCheckboxes('analytics', analyticsFilters)}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </div>
+                    <AccordionItem value='analytics'>
+                      <AccordionTrigger className='py-3 text-sm text-gray-400 hover:text-gray-500'>
+                        <span className='font-medium'>Analytics</span>
+                      </AccordionTrigger>
+                      <AccordionContent className='pt-6 animate-none'>
+                        {renderCheckboxes('analytics', analyticsFilters)}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
 
           {/* Template grid */}
-          <ul className='lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
-            {templates && templates.length === 0 ? (
-              <EmptyState />
-            ) : templates ? (
-              templates.map((template) => <Template key={template.id} template={template} />)
-            ) : (
-              new Array(12).fill(null).map((_, i) => <TemplateSkeleton key={i} />)
-            )}
-          </ul>
+          <div className='w-full'>
+            <ul className='lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 w-full'>
+              {templates && templates.length === 0 ? (
+                <li className='col-span-full'>
+                  <EmptyState />
+                </li>
+              ) : templates ? (
+                templates.map((template) => (
+                  <li key={template.id}>
+                    <Template template={template} />
+                  </li>
+                ))
+              ) : (
+                new Array(12).fill(null).map((_, i) => (
+                  <li key={i}>
+                    <TemplateSkeleton />
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
         </div>
       </section>
     </main>

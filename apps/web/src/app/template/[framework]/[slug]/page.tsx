@@ -10,6 +10,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { CopyNpmCommandButton } from '@/components/copy-button';
+import { Icons } from '@/components/icons';
+import { Button } from '@/components/ui/button';
 
 const TemplatePage = () => {
   const pathname = usePathname();
@@ -64,7 +66,7 @@ const TemplatePage = () => {
     __yarnCommand__: `yarn dlx chai sip ${template.slug}`,
     __bunCommand__: `bun x chai sip ${template.slug}`
   };
-  
+
   return (
     <div className="flex flex-col items-center py-10 container">
       <div className="grid grid-cols-8">
@@ -75,13 +77,43 @@ const TemplatePage = () => {
           <h1 className="text-6xl font-bold my-4 mb-6">{template.templateName}</h1>
           <p className="my-4">{template.templateDescription}</p>
           <div className="mb-4">
-            <div><strong>Framework</strong>: {template.framework}</div>
-            <div><strong>Use Case</strong>: {template.usecase.join(', ')}</div>
-            <div><strong>CSS</strong>: {template.css}</div>
+            {template.framework && (
+              <div><strong>Framework</strong>: {template.framework}</div>
+            )}
+            {template.usecase.length > 0 && (
+              <div><strong>Use Case</strong>: {template.usecase.join(', ')}</div>
+            )}
+            {template.css && (
+              <div><strong>CSS</strong>: {template.css}</div>
+            )}
+            {template.database && (
+              <div><strong>Database</strong>: {template.database}</div>
+            )}
+            {template.authentication && (
+              <div><strong>Authentication</strong>: {template.authentication}</div>
+            )}
+            {template.cms && (
+              <div><strong>CMS</strong>: {template.cms}</div>
+            )}
           </div>
           <div>
-            <button className="w-full mb-2 py-2 bg-white text-gray-900 font-semibold rounded">Deploy</button>
-            <button className="w-full py-2 bg-white text-gray-900 font-semibold rounded">View Demo</button>
+            <div className='w-full flex justify-between gap-2 mb-4'>
+              <Button className='w-full' variant="secondary">
+                <Link 
+                target='_blank' 
+                href={template.vercelDeployUrl} 
+                className='flex gap-1 items-center'
+                >
+                  <Icons.vercel className='h-4 w-4' />Deploy
+                </Link>
+              </Button>
+              <Button className='w-full'>
+                <Link target='_blank' href={template.previewUrl}>
+                  View Demo
+                </Link>
+              </Button>
+            </div>
+            <span>or download</span>
             <div className="relative">
               <pre className='mb-4 mt-6 px-4 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900 flex justify-between items-center'>
                 <code>npx chai sip {template.slug}</code>

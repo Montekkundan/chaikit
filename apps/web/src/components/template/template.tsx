@@ -15,7 +15,7 @@ const TemplateComponent: React.FC<TemplateProps> = ({ template }) => {
      href={`/template/${template.framework.toLowerCase()}/${template.slug}`}
      >
       <div className='group relative border border-transparent hover:cursor-pointer rounded-md hover:border-white overflow-hidden max-w-xs'>
-        <div className='w-full h-64 overflow-hidden'>
+        <div className='h-64 overflow-hidden'>
           <Image
             src={template.imageUrl}
             alt='product image'

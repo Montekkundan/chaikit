@@ -1,9 +1,12 @@
 type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
+    vercel: (props: IconProps) => (
+        <svg viewBox="0 0 256 222" {...props}><path fill="#fff" d="m128 0 128 221.705H0z" /></svg>
+    ),
     logo: (props: IconProps) => (
-        <svg 
-        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" {...props}
+        <svg
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" {...props}
         >
             <g><path fill="#f9f1e4" d="M 317.5,14.5 C 311.209,9.24839 303.876,6.41506 295.5,6C 288.736,5.28598 282.069,5.78598 275.5,7.5C 279.57,5.11133 284.07,4.11133 289,4.5C 297.959,4.39614 306.459,6.22947 314.5,10C 316.141,11.129 317.141,12.629 317.5,14.5 Z" /></g>
             <g><path fill="#929292" d="M 117.5,9.5 C 101.151,9.31708 84.8177,9.65041 68.5,10.5C 77.6111,8.94219 86.9444,8.27553 96.5,8.5C 103.675,8.50035 110.675,8.83368 117.5,9.5 Z" /></g>
