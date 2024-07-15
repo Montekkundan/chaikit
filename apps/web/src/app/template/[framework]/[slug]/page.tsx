@@ -68,12 +68,24 @@ const TemplatePage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center py-10 container">
-      <div className="grid grid-cols-8">
-        <div className="px-8 py-8 sticky col-span-3 top-16 self-start">
-          <Link href='/template' className='text-secondary hover:text-primary flex items-center gap-1'>
-            <ArrowLeft className='h-4 w-4' /> Back to Templates
-          </Link>
+    <div className="container flex flex-col items-center py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-8 gap-4">
+        <div className="lg:col-span-3 lg:sticky lg:top-16 lg:self-start px-8 py-8">
+          {/* Mobile View */}
+          <div className="lg:hidden">
+            <Link href='/template' className='text-secondary hover:text-primary flex items-center gap-1 mb-4'>
+              <ArrowLeft className='h-4 w-4' /> Back to Templates
+            </Link>
+            <div className="mb-4 flex justify-center">
+              <Image
+                src={template.imageUrl}
+                alt={template.templateName}
+                width={400}
+                height={300}
+              />
+            </div>
+          </div>
+
           <h1 className="text-6xl font-bold my-4 mb-6">{template.templateName}</h1>
           <p className="my-4">{template.templateDescription}</p>
           <div className="mb-4">
@@ -120,11 +132,10 @@ const TemplatePage = () => {
                 <CopyNpmCommandButton commands={npmCommands} className="ml-4" />
               </pre>
             </div>
-
           </div>
         </div>
-        <div className="px-8 py-8 col-span-5 overflow-auto border-l border-solid">
-          <div>
+        <div className="lg:col-span-5 px-8 py-8 overflow-auto lg:border-l border-solid">
+          <div className="hidden lg:flex justify-center">
             <Image
               src={template.imageUrl}
               alt={template.templateName}
@@ -180,12 +191,6 @@ const TemplatePage = () => {
           </ReactMarkdown>
         </div>
       </div>
-      {/* <div className="w-full max-w-6xl mt-10">
-        <h2 className="text-xl font-bold mb-4">Related Templates</h2>
-        <div className="flex space-x-4">
-          related
-        </div>
-      </div> */}
     </div>
   );
 };
