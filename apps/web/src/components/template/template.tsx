@@ -11,11 +11,11 @@ interface TemplateProps {
 const TemplateComponent: React.FC<TemplateProps> = ({ template }) => {
   return (
     <Link
-     className='flex justify-center bg-black rounded-md'
+     className='flex justify-center rounded-md'
      href={`/template/${template.framework.toLowerCase()}/${template.slug}`}
      >
-      <div className='group relative border border-transparent hover:cursor-pointer rounded-md hover:border-white overflow-hidden max-w-xs'>
-        <div className='h-64 overflow-hidden'>
+      <div className='bg-black group relative border border-transparent hover:cursor-pointer rounded-md hover:border-white overflow-hidden max-w-xs'>
+        <div className='overflow-hidden'>
           <Image
             src={template.imageUrl}
             alt='product image'

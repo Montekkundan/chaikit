@@ -88,7 +88,7 @@ const TemplatePage = () => {
           <Link href='/template' className='hidden text-secondary hover:text-primary lg:flex items-center gap-1 mb-4'>
               <ArrowLeft className='h-4 w-4' /> Back to Templates
           </Link>
-          <h1 className="text-6xl font-bold my-4 mb-6">{template.templateName}</h1>
+          <h1 className="text-6xl font-bold mt-8 mb-6">{template.templateName}</h1>
           <p className="my-4">{template.templateDescription}</p>
           <div className="mb-4">
             {template.framework && (
