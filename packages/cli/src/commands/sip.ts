@@ -6,7 +6,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { Templates } from '../types.js';
 
-const baseUrl = process.env.REGISTRY_URL ?? 'https://www.chaikit.xyz/__registry__/template.json';
+const baseUrl = process.env.REGISTRY_URL ?? 'https://chaikit.xyz/__registry__/template.json';
 
 // Function to get template data from the registry
 async function getTemplateData() {

@@ -1,6 +1,6 @@
 {
   "name": "@repo/cli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "CLI for the repo",
   "publishConfig": {
     "access": "public"
@@ -41,7 +41,8 @@
     "release": "changeset publish",
     "pub:beta": "pnpm build && pnpm publish --no-git-checks --access public --tag beta",
     "pub:next": "pnpm build && pnpm publish --no-git-checks --access public --tag next",
-    "pub:release": "pnpm build && pnpm publish --access public"
+    "pub:release": "pnpm build && pnpm publish --access public",
+    "release:full": "pnpm changeset && pnpm changeset version && pnpm build && pnpm publish --access public"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
