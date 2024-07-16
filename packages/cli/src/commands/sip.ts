@@ -152,6 +152,8 @@ const sip = new Command('sip')
         targetDir = newFolderName;
       }
 
+      const targetDirPath = path.resolve(targetDir);
+
       console.log(`Cloning repository from ${template.githubUrl}...`);
       execSync(`git clone ${template.githubUrl} ${targetDir}`, { stdio: 'inherit' });
 
@@ -182,7 +184,8 @@ const sip = new Command('sip')
             ],
           },
         ]);
-
+      
+        process.chdir(targetDirPath);
         installDependencies(packageManager);
       }
 
