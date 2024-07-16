@@ -1,5 +1,5 @@
 {
-  "name": "chai",
+  "name": "chaikit",
   "version": "1.0.0",
   "description": "CLI for the repo",
   "publishConfig": {
@@ -28,7 +28,7 @@
   "type": "module",
   "exports": "./dist/index.js",
   "bin": {
-    "chai": "./dist/index.js"
+    "chaikit": "./dist/index.js"
   },
   "scripts": {
     "dev": "tsup --watch",

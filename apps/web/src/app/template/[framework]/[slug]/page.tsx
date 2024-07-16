@@ -61,10 +61,10 @@ const TemplatePage = () => {
     return <div>Loading...</div>;
   }
   const npmCommands = {
-    __npmCommand__: `npx chai sip ${template.slug}`,
-    __pnpmCommand__: `pnpm dlx chai sip ${template.slug}`,
-    __yarnCommand__: `yarn dlx chai sip ${template.slug}`,
-    __bunCommand__: `bun x chai sip ${template.slug}`
+    __npmCommand__: `npx chaikit sip ${template.slug}`,
+    __pnpmCommand__: `pnpm dlx chaikit sip ${template.slug}`,
+    __yarnCommand__: `yarn dlx chaikit sip ${template.slug}`,
+    __bunCommand__: `bun x chaikit sip ${template.slug}`
   };
 
   return (
@@ -130,7 +130,7 @@ const TemplatePage = () => {
             <span>or download</span>
             <div className="relative">
               <pre className='mb-4 mt-6 px-4 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900 flex justify-between items-center'>
-                <code>npx chai sip {template.slug}</code>
+                <code>npx chaikit sip {template.slug}</code>
                 <CopyNpmCommandButton commands={npmCommands} className="ml-4" />
               </pre>
             </div>

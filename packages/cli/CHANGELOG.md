@@ -1,7 +1,7 @@
-# chai
+# chaikit
 
 ## 1.0.0
 
 ### Major Changes
 
-- chai served with a sip
+- chaikit served with a sip

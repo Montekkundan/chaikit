@@ -1,5 +1,5 @@
 ---
-"chai": major
+"chaikit": major
 ---
 
-chai served with a sip
+chaikit served with a sip

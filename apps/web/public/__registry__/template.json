@@ -6,7 +6,7 @@
     "cms": "",
     "author": "Chaikit",
     "authorUrl": "https://github.com/chaikitxyz",
-    "previewUrl": "https://example.com/template-1",
+    "previewUrl": "https://slothmdx.vercel.app",
     "githubUrl": "https://github.com/chaikitxyz/slothmdx",
     "readmeLink": "https://github.com/chaikitxyz/slothmdx/blob/master/README.md",
     "usecase": [
@@ -16,22 +16,5 @@
     "css": "CSS",
     "database": "",
     "authentication": ""
-  },
-  "vue-contentful-template": {
-    "templateName": "Vue Contentful Template",
-    "templateDescription": "This is a Vue template with Contentful CMS integration.",
-    "framework": "Vue",
-    "cms": "Contentful",
-    "author": "Chaikit",
-    "authorUrl": "https://github.com/chaikitxyz",
-    "previewUrl": "https://example.com/template-2",
-    "githubUrl": "https://github.com/example/template-2",
-    "readmeLink": "https://github.com/chaikitxyz/slothmdx/blob/master/README.md",
-    "usecase": [
-      "Portfolio"
-    ],
-    "css": "Bootstrap",
-    "database": "PostgreSQL",
-    "authentication": "Firebase"
   }
 }
