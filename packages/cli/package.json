@@ -1,5 +1,5 @@
 {
-  "name": "@repo/cli",
+  "name": "chai",
   "version": "1.0.0",
   "description": "CLI for the repo",
   "publishConfig": {

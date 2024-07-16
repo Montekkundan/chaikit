@@ -1,5 +1,5 @@
 ---
-"@repo/cli": major
+"chai": major
 ---
 
 chai served with a sip
