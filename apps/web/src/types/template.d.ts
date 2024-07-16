@@ -5,6 +5,7 @@ export interface Template {
     author: string;
     authorUrl: string;
     imageUrl: string;
+    imageCarousel: string[];
     previewUrl: string;
     githubUrl: string;
     vercelDeployUrl: string;
