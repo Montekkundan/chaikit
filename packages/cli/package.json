@@ -23,7 +23,9 @@
     "ui",
     "tailwind",
     "framer-motion",
-    "montekkundan"
+    "templates",
+    "react",
+    "astro"
   ],
   "type": "module",
   "exports": "./dist/index.js",
