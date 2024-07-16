@@ -6,7 +6,11 @@
     "build:cli": "turbo --filter=chaikit build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "release": "changeset version",
+    "pub:beta": "cd packages/cli && pnpm pub:beta",
+    "pub:release": "cd packages/cli && pnpm pub:release",
+    "test": "turbo run test --force"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
@@ -16,5 +20,9 @@
   "packageManager": "pnpm@9.0.6",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.27.7",
+    "changeset": "^0.2.6"
   }
 }
