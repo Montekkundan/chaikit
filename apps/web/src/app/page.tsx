@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <main className="relative flex flex-col h-screen">
       <div className="z-20 absolute inset-x-0 top-1/6 flex flex-col items-center">
-        <Link href="/template" className="relative">
-          <Button className="px-8 py-2 rounded-full relative hover:bg-slate-700 bg-slate-700 text-white text-sm hover:shadow-xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
+        {/* <Link href="/template" className=""> */}
+          <Link href="/template" className="px-8 py-2 rounded-full relative hover:bg-slate-700 bg-slate-700 text-white text-sm hover:shadow-xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
             <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
             Templates
-          </Button>
-        </Link>
+          </Link>
+        {/* </Link> */}
         {/*  buttons  */}
       </div>
       <div className="absolute mt-4 inset-x-0 top-1/5 flex flex-col items-center">

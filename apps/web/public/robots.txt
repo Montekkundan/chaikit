@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.chaikit.xyz
+
+# Sitemaps
+Sitemap: https://www.chaikit.xyz/sitemap.xml

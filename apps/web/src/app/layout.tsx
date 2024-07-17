@@ -6,6 +6,7 @@ import { fontSans } from "@/lib/fonts";
 import { Analytics } from "@/components/analytics";
 import { cn } from "@/lib/utils";
 import { SiteFooter } from "@/components/site-footer";
+import Head from "next/head";
 
 
 export const metadata: Metadata = {
@@ -57,7 +58,12 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  themeColor: "#000000",
+  colorScheme: "dark",
+
 }
 
 export default function RootLayout({
@@ -67,28 +73,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <head />
-    <body
-      className={cn(
-        "bg-background font-sans antialiased",
-        fontSans.variable
-      )}
-    >
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
+      <Head >
+        <link rel="manifest" href={`${siteConfig.url}/site.webmanifest`} />
+      </Head>
+      <body
+        className={cn(
+          "bg-background font-sans antialiased",
+          fontSans.variable
+        )}
       >
-        <div vaul-drawer-wrapper="">
-          <div className="relative flex flex-col bg-background">
-            {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div vaul-drawer-wrapper="">
+            <div className="relative flex flex-col bg-background">
+              {children}
+            </div>
           </div>
-        </div>
-        <SiteFooter />
-        <Analytics />
-      </ThemeProvider>
-    </body>
-  </html>
+          <SiteFooter />
+          <Analytics />
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

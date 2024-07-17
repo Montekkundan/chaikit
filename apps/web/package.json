@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "pnpm build:tt && next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "build:tt": "tsx ./src/scripts/transformTemplates.ts"
@@ -28,6 +29,7 @@
     "leva": "^0.9.35",
     "lucide-react": "^0.407.0",
     "next": "14.0.4",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
