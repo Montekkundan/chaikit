@@ -1,0 +1,43 @@
+import { BrowserComponent } from "./ui/browser-component";
+import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
+import { useState, useEffect } from 'react';
+
+export const Broswer = () => {
+  const [size, setSize] = useState('mobile');
+  const [className, setClassName] = useState('w-[375px] h-[667px]');
+
+  useEffect(() => {
+    handleSizeChange(size);
+  }, []);
+
+  const handleSizeChange = (value: string) => {
+    setSize(value);
+    switch (value) {
+      case 'mobile':
+        setClassName('w-[375px] h-[667px]');
+        break;
+      case 'tablet':
+        setClassName('w-[768px] h-[724px]');
+        break;
+      case 'desktop':
+      default:
+        setClassName('w-[768px] h-[1024px]');
+        break;
+    }
+  };
+
+  return (
+    <>
+      <ToggleGroup type="single" value={size} onValueChange={handleSizeChange} defaultValue="mobile">
+        <ToggleGroupItem className="bg-black text-gray-500 hover:text-white" value="mobile">mobile</ToggleGroupItem>
+        <ToggleGroupItem className="bg-black text-gray-500 hover:text-white" value="tablet">tablet</ToggleGroupItem>
+        <ToggleGroupItem className="bg-black text-gray-500 hover:text-white" value="desktop">laptop</ToggleGroupItem>
+      </ToggleGroup>
+      <BrowserComponent className={className} url="https://slothmdx.vercel.app">
+        <section className={'w-full h-full flex items-center justify-center'}>
+          <h1 className={'md:text-xl text-base'}>Hi!</h1>
+        </section>
+      </BrowserComponent>
+    </>
+  )
+}
