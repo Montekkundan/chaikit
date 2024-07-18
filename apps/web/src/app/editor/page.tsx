@@ -17,11 +17,10 @@ import { Box } from "lucide-react";
 
 function FullPageEditor() {
   return (
-    <div className="flex h-full w-full flex-col items-start bg-default-background">
-      <EditorTopBar heading="slothmdx" />
+    <div className="flex h-screen w-full flex-col items-start bg-default-background">
       <div className="flex w-full grow shrink-0 basis-0 flex-wrap items-start mobile:flex-col mobile:flex-wrap mobile:gap-0">
-        <div className="flex w-64 flex-none flex-col items-start justify-between self-stretch border-r border-solid border-neutral-border mobile:h-auto mobile:w-full mobile:flex-none">
-          {/* <div className="flex w-full flex-col items-start gap-px border-b border-solid border-neutral-border bg-neutral-border">
+        <div className="flex m-2 p-1 rounded-md bg-black w-64 flex-none flex-col items-start justify-between self-stretch  mobile:h-auto mobile:w-full mobile:flex-none">
+          {/* <div className="flex w-full flex-col items-start gap-px bg-neutral-border">
             <div className="flex w-full items-start gap-px">
               <SidebarTile icon="FeatherWebhook" text="Webhook" />
               <SidebarTile icon="FeatherCalendar" text="Event" />
@@ -43,7 +42,7 @@ function FullPageEditor() {
             <SidebarButton link="/template" icon={<Box/>} text="Templates" />
           </div>
         </div>
-        <div className="relative flex grow shrink-0 basis-0 flex-col items-center justify-center gap-2 self-stretch bg-neutral-50 mobile:border mobile:border-solid mobile:border-neutral-border mobile:pt-12 mobile:pr-12 mobile:pb-12 mobile:pl-12 overflow-hidden">
+        <div className="relative m-2 rounded-md flex grow shrink-0 basis-0 flex-col items-center justify-center gap-2 self-stretch bg-neutral-50 overflow-hidden">
           <DotPattern className={cn("absolute inset-0 w-full h-full")} />
           <div className="mt-6 relative flex flex-col items-center justify-center gap-1">
             <Broswer />
@@ -57,7 +56,7 @@ function FullPageEditor() {
             </div>
           </div>
         </div>
-        <div className="flex w-80 flex-none flex-col items-start self-stretch border-l border-solid border-neutral-border mobile:h-auto mobile:w-full mobile:flex-none">
+        <div className=" bg-black rounded-md m-2 flex w-80 flex-none flex-col items-start self-stretch">
           <div className="flex w-full flex-col items-start">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">

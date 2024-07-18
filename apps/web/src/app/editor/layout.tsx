@@ -1,5 +1,4 @@
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
+import { EditorTopBar } from "@/components/ui/editor-top-bar"
 
 export default function TemplateLayout({
     children,
@@ -8,9 +7,8 @@ export default function TemplateLayout({
   }) {
     return (
       <>
-      <SiteHeader />
+    <EditorTopBar heading="slothmdx" />
       {children}
-      <SiteFooter />
       </>
     )
   }

@@ -25,7 +25,7 @@ const SidebarButtonRoot = React.forwardRef<HTMLElement, SidebarButtonRootProps>(
     const content = (
       <div
         className={cn(
-          "group/315250d8 flex w-full cursor-pointer items-center gap-4 border-t border-solid border-neutral-border pt-4 pr-4 pb-4 pl-4",
+          "group/315250d8 flex w-full cursor-pointer items-center gap-4  pt-4 pr-4 pb-4 pl-4",
           className
         )}
         ref={ref as any}

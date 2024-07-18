@@ -21,7 +21,7 @@ export const Broswer = () => {
         break;
       case 'desktop':
       default:
-        setClassName('w-[768px] h-[1024px]');
+        setClassName('w-[1024px] h-[724px]');
         break;
     }
   };

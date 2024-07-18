@@ -20,7 +20,7 @@ const EditorTopBarRoot = React.forwardRef<HTMLElement, EditorTopBarRootProps>(
     return (
       <div
         className={cn(
-          "flex w-full items-center gap-2 border-b border-solid border-neutral-border pr-4 pl-4",
+          "z-20 flex w-full items-center gap-2 pr-4 pl-4",
           className
         )}
         ref={ref as any}
