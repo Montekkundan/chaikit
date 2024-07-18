@@ -2,7 +2,7 @@ import { BrowserComponent } from "./ui/browser-component";
 import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
 import { useState, useEffect } from 'react';
 import { LaptopMinimal, Tablet, Smartphone} from 'lucide-react';
-export const Broswer = () => {
+export const Broswer = ({url}: {url: string}) => {
   const [size, setSize] = useState('mobile');
   const [className, setClassName] = useState('w-[375px] h-[667px]');
 
@@ -33,7 +33,7 @@ export const Broswer = () => {
         <ToggleGroupItem className="p-0 h-6 bg-black text-gray-500 hover:text-white" value="tablet"><Tablet className="h-4"/></ToggleGroupItem>
         <ToggleGroupItem className="p-0 h-6 bg-black text-gray-500 hover:text-white" value="desktop"><LaptopMinimal className="h-4"/></ToggleGroupItem>
       </ToggleGroup>
-      <BrowserComponent className={className} url="https://slothmdx.vercel.app">
+      <BrowserComponent className={className} url={url}>
         <section className={'w-full h-full flex items-center justify-center'}>
           <h1 className={'md:text-xl text-base'}>Hi!</h1>
         </section>

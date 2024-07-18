@@ -14,7 +14,7 @@ function FullPageEditor() {
         <div className="relative m-2 rounded-md flex grow shrink-0 basis-0 flex-col items-center justify-center gap-2 self-stretch bg-neutral-50 overflow-hidden">
           <DotPattern className={cn("absolute inset-0 w-full h-full")} />
           <div className="relative flex flex-col items-center justify-center gap-1">
-            <Broswer />
+            <Broswer url="https://slothmdx.vercel.app" />
           </div>
         </div>
         <SidebarRight url="https://slothmdx.vercel.app/siteConfig.json" />
