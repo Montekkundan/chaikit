@@ -13,14 +13,15 @@ import {
 import { Broswer } from "@/components/browser";
 import DotPattern from "@/components/ui/dot-pattern";
 import { cn } from "@/lib/utils";
+import { Box } from "lucide-react";
 
 function FullPageEditor() {
   return (
     <div className="flex h-full w-full flex-col items-start bg-default-background">
-      <EditorTopBar />
+      <EditorTopBar heading="slothmdx" />
       <div className="flex w-full grow shrink-0 basis-0 flex-wrap items-start mobile:flex-col mobile:flex-wrap mobile:gap-0">
         <div className="flex w-64 flex-none flex-col items-start justify-between self-stretch border-r border-solid border-neutral-border mobile:h-auto mobile:w-full mobile:flex-none">
-          <div className="flex w-full flex-col items-start gap-px border-b border-solid border-neutral-border bg-neutral-border">
+          {/* <div className="flex w-full flex-col items-start gap-px border-b border-solid border-neutral-border bg-neutral-border">
             <div className="flex w-full items-start gap-px">
               <SidebarTile icon="FeatherWebhook" text="Webhook" />
               <SidebarTile icon="FeatherCalendar" text="Event" />
@@ -37,16 +38,14 @@ function FullPageEditor() {
               <SidebarTile icon="FeatherMessageSquare" text="SMS" />
               <SidebarTile icon="FeatherBot" text="AI" />
             </div>
-          </div>
-          <div className="flex w-full flex-col items-start justify-end">
-            <SidebarButton icon="FeatherLayoutGrid" text="Templates" />
-            <SidebarButton icon="FeatherBookmark" text="Saved" />
-            <SidebarButton icon="FeatherHelpCircle" text="Help" />
+          </div> */}
+          <div className="flex w-full flex-col">
+            <SidebarButton link="/template" icon={<Box/>} text="Templates" />
           </div>
         </div>
         <div className="relative flex grow shrink-0 basis-0 flex-col items-center justify-center gap-2 self-stretch bg-neutral-50 mobile:border mobile:border-solid mobile:border-neutral-border mobile:pt-12 mobile:pr-12 mobile:pb-12 mobile:pl-12 overflow-hidden">
           <DotPattern className={cn("absolute inset-0 w-full h-full")} />
-          <div className="relative flex flex-col items-center justify-center gap-4 z-10">
+          <div className="mt-6 relative flex flex-col items-center justify-center gap-1">
             <Broswer />
             <div className="flex flex-col items-center justify-center gap-1">
               <span className="text-caption-bold font-caption-bold text-default-font">

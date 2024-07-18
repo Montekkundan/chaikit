@@ -1,7 +1,7 @@
 import { BrowserComponent } from "./ui/browser-component";
 import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group';
 import { useState, useEffect } from 'react';
-
+import { LaptopMinimal, Tablet, Smartphone} from 'lucide-react';
 export const Broswer = () => {
   const [size, setSize] = useState('mobile');
   const [className, setClassName] = useState('w-[375px] h-[667px]');
@@ -29,9 +29,9 @@ export const Broswer = () => {
   return (
     <>
       <ToggleGroup type="single" value={size} onValueChange={handleSizeChange} defaultValue="mobile">
-        <ToggleGroupItem className="bg-black text-gray-500 hover:text-white" value="mobile">mobile</ToggleGroupItem>
-        <ToggleGroupItem className="bg-black text-gray-500 hover:text-white" value="tablet">tablet</ToggleGroupItem>
-        <ToggleGroupItem className="bg-black text-gray-500 hover:text-white" value="desktop">laptop</ToggleGroupItem>
+        <ToggleGroupItem className="p-0 h-6 bg-black text-gray-500 hover:text-white" value="mobile"><Smartphone className="h-4"/></ToggleGroupItem>
+        <ToggleGroupItem className="p-0 h-6 bg-black text-gray-500 hover:text-white" value="tablet"><Tablet className="h-4"/></ToggleGroupItem>
+        <ToggleGroupItem className="p-0 h-6 bg-black text-gray-500 hover:text-white" value="desktop"><LaptopMinimal className="h-4"/></ToggleGroupItem>
       </ToggleGroup>
       <BrowserComponent className={className} url="https://slothmdx.vercel.app">
         <section className={'w-full h-full flex items-center justify-center'}>
