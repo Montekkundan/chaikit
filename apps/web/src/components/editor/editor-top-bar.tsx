@@ -3,9 +3,10 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { Button } from "./button";
+import { Button } from "../ui/button";
 import { Icons } from "../icons";
 import Link from "next/link";
+import { Badge } from "../ui/badge";
 
 interface EditorTopBarRootProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -28,6 +29,8 @@ const EditorTopBarRoot = React.forwardRef<HTMLElement, EditorTopBarRootProps>(
       >
         <div className="flex grow shrink-0 basis-0 items-center gap-4">
          <Link href="/"><Icons.logo className="h-6 w-6" /></Link>
+         <Badge>BETA</Badge>
+
         </div>
         <div className="flex grow shrink-0 basis-0 flex-col items-center justify-center gap-2 self-stretch">
           {heading}

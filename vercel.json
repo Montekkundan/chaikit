@@ -1,0 +1,7 @@
+{
+    "crons": [{
+      "path": "/api/delete-inactive-keys",
+      "schedule": "0 0 * * *"
+    }]
+  }
+  

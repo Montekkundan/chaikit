@@ -1,14 +1,14 @@
-import { EditorTopBar } from "@/components/ui/editor-top-bar"
+import { EditorTopBar } from "@/components/editor/editor-top-bar"
 
 export default function TemplateLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
-    return (
-      <>
-    <EditorTopBar heading="slothmdx" />
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <>
+      <EditorTopBar heading="slothmdx" />
       {children}
-      </>
-    )
-  }
+    </>
+  )
+}
