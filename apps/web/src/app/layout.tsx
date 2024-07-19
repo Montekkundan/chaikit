@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
 import { siteConfig } from "@/config/site";
 import { ThemeProvider } from "@/components/providers";
-import { fontSans } from "@/lib/fonts";
+import { JosephinFont, fontDisplay, geistMono, geistSans } from "@/styles/fonts";
 import { Analytics } from "@/components/analytics";
 import { cn } from "@/lib/utils";
 import { SiteFooter } from "@/components/site-footer";
@@ -61,10 +61,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.url,
   },
-  themeColor: "#000000",
-  colorScheme: "dark",
-
 }
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -78,9 +82,13 @@ export default function RootLayout({
       </Head>
       <body
         className={cn(
-          "bg-background font-sans antialiased",
-          fontSans.variable
+          "font-sans",
+          geistMono.variable,
+          geistSans.variable,
+          fontDisplay.variable,
+          JosephinFont.variable
         )}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"

@@ -1,56 +1,120 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+"use client";
 
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import {
+  composeRenderProps,
+  Button as AriaButton,
+  Link as AriaLink,
+  type ButtonProps as AriaButtonProps,
+  type LinkProps as AriaLinkProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
+import { LoaderIcon } from "@/lib/icons";
+import { focusRing } from "@/lib/utils/styles";
 
-const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+const buttonStyles = tv(
   {
+    extend: focusRing,
+    base: "inline-flex gap-2 cursor-pointer items-center justify-center whitespace-nowrap rounded-md leading-normal text-sm shrink-0 font-medium ring-offset-background transition-colors disabled:cursor-default disabled:bg-bg-disabled disabled:text-fg-disabled",
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        default:
+          "bg-bg-neutral hover:bg-bg-neutral-hover pressed:bg-bg-neutral-active text-fg-onNeutral",
+        primary:
+          "bg-bg-primary hover:bg-bg-primary-hover pressed:bg-bg-primary-active text-fg-onPrimary",
+        quiet: "bg-transparent hover:bg-bg-inverse/10 pressed:bg-bg-inverse/20 text-fg",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-border-field bg-transparent hover:bg-bg-inverse/10 pressed:bg-bg-inverse/20 text-fg disabled:border-border-disabled disabled:bg-transparent",
+        accent:
+          "bg-bg-accent hover:bg-bg-accent-hover pressed:bg-bg-accent-active text-fg-onAccent",
+        success:
+          "bg-bg-success hover:bg-bg-success-hover pressed:bg-bg-success-active text-fg-onSuccess",
+        warning:
+          "bg-bg-warning hover:bg-bg-warning-hover pressed:bg-bg-warning-active text-fg-onWarning",
+        danger:
+          "bg-bg-danger hover:bg-bg-danger-hover pressed:bg-bg-danger-active text-fg-onDanger",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        sm: "h-8 px-3 [&_svg]:size-4",
+        md: "h-9 px-4 [&_svg]:size-4",
+        lg: "h-10 px-5 [&_svg]:size-5",
+      },
+      shape: {
+        rectangle: "",
+        square: "",
+        circle: "rounded-full",
       },
     },
+    compoundVariants: [
+      {
+        size: "sm",
+        shape: ["square", "circle"],
+        className: "w-8 px-0",
+      },
+      {
+        size: "md",
+        shape: ["square", "circle"],
+        className: "w-9 px-0",
+      },
+      {
+        size: "lg",
+        shape: ["square", "circle"],
+        className: "w-10 px-0",
+      },
+    ],
     defaultVariants: {
       variant: "default",
-      size: "default",
+      size: "md",
+      shape: "rectangle",
     },
+  },
+  {
+    responsiveVariants: ["sm", "lg"],
   }
-)
+);
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+interface ButtonProps
+  extends Omit<AriaButtonProps, "className">,
+    Omit<AriaLinkProps, "className" | "children" | "style">,
+    VariantProps<typeof buttonStyles> {
+  className?: string;
+  isLoading?: boolean;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+const Button = React.forwardRef(
+  (localProps: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) => {
+    const contextProps = useButtonContext();
+    const props = { ...contextProps, ...localProps };
+    const { className, variant, size, shape, isDisabled, isLoading, prefix, suffix, ...restProps } =
+      props;
+    const Element: React.ElementType = props.href ? AriaLink : AriaButton;
     return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+      <Element
         ref={ref}
-        {...props}
-      />
-    )
+        {...restProps}
+        isDisabled={isDisabled || isLoading}
+        className={buttonStyles({ variant, size, shape, className })}
+      >
+        {composeRenderProps(props.children, (children) => (
+          <>
+            {isLoading ? <LoaderIcon aria-label="loading" className="animate-spin" /> : prefix}
+            {typeof children === "string" ? <span className="truncate">{children}</span> : children}
+            {suffix}
+          </>
+        ))}
+      </Element>
+    );
   }
-)
-Button.displayName = "Button"
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+type ButtonContextValue = VariantProps<typeof buttonStyles>;
+const ButtonContext = React.createContext<ButtonContextValue>({});
+const useButtonContext = () => {
+  return React.useContext(ButtonContext);
+};
+
+export type { ButtonProps };
+export { Button, buttonStyles, ButtonContext };
