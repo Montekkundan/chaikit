@@ -146,7 +146,7 @@ const TemplatePage = () => {
           </div>
           <div>
             <div className="w-full flex justify-between gap-2 mb-4">
-              <Button className="w-full" variant="secondary">
+              <Button className="w-full" variant="outline">
                 <Link
                   target="_blank"
                   href={template.vercelDeployUrl}
