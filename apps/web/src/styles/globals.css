@@ -277,3 +277,32 @@
     }
   }
 }
+
+@layer utilities {
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+}
+
+/* Dark Mode Specific */
+@media (prefers-color-scheme: dark) {
+  .dark .text-primary {
+    --color-primary: var(--color-neutral-100);
+  }
+  .dark .text-secondary {
+    --color-secondary: var(--color-success-800);
+  }
+}
+
+/* Light Mode Specific */
+@media (prefers-color-scheme: light) {
+  .text-primary {
+    --color-primary: var(--color-neutral-1000);
+  }
+  .text-secondary {
+    --color-secondary: var(--color-neutral-700);
+  }
+}

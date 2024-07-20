@@ -84,12 +84,12 @@ const TemplatePage = () => {
           <div className="lg:hidden">
             <Link
               href="/template"
-              className="text-secondary hover:text-primary flex items-center gap-1 mb-4"
+              className="text-primary flex items-center gap-1 mb-4"
             >
               <ArrowLeft className="h-4 w-4" /> Back to Templates
             </Link>
             <div className="mb-4 flex justify-center">
-            <Carousel>
+              <Carousel>
                 <CarouselContent className="h-64">
                   {template.imageCarousel.map((image, index) => (
                     <CarouselItem key={index}>
@@ -104,7 +104,7 @@ const TemplatePage = () => {
           </div>
           <Link
             href="/template"
-            className="hidden text-secondary hover:text-primary lg:flex items-center gap-1 mb-4"
+            className="hidden text-gray-700 hover:text-primary lg:flex items-center gap-1 mb-4"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Templates
           </Link>
@@ -145,26 +145,18 @@ const TemplatePage = () => {
             )}
           </div>
           <div>
-            <div className="w-full flex justify-between gap-2 mb-4">
-              <Button className="w-full" variant="outline">
-                <Link
-                  target="_blank"
-                  href={template.vercelDeployUrl}
-                  className="flex gap-1 items-center"
-                >
-                  <Icons.vercel className="h-4 w-4" />
-                  Deploy
-                </Link>
+            <div className="w-full flex-col flex justify-between gap-2 mb-4">
+              <Button target="_blank" href={template.vercelDeployUrl} className="w-full" variant="outline">
+                <Icons.vercel className="h-4 w-4" />
+                Deploy
               </Button>
-              <Button className="w-full">
-                <Link target="_blank" href={template.previewUrl}>
-                  View Demo
-                </Link>
+              <Button target="_blank" href={template.previewUrl} className="w-full">
+                View Demo
               </Button>
             </div>
             <span>or download</span>
             <div className="relative">
-              <pre className="mb-4 mt-6 px-4 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900 flex justify-between items-center">
+              <pre className="mb-4 mt-2 px-4 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900 flex justify-between items-center">
                 <code>npx chaikit sip {template.slug}</code>
                 <CopyNpmCommandButton commands={npmCommands} className="ml-4" />
               </pre>
@@ -173,17 +165,17 @@ const TemplatePage = () => {
         </div>
         <div className="lg:col-span-5 px-8 py-8 overflow-auto lg:border-l border-solid">
           <div className="hidden lg:flex justify-center">
-              <Carousel className="w-1/2">
-                <CarouselContent>
-                  {template.imageCarousel.map((image, index) => (
-                    <CarouselItem key={index}>
-                      <Image src={image} alt={`Carousel image ${index + 1}`} width={400} height={300} />
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
+            <Carousel className="w-1/2">
+              <CarouselContent>
+                {template.imageCarousel.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <Image src={image} alt={`Carousel image ${index + 1}`} width={400} height={300} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
 
             {/* <Image
               src={template.imageUrl}
@@ -229,7 +221,7 @@ const TemplatePage = () => {
               tr: ({ ...props }) => <tr>{props.children}</tr>,
               td: ({ ...props }) => <td className="p-2">{props.children}</td>,
               pre: ({ ...props }) => (
-                <pre className="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto my-6">
+                <pre className="bg-bg-muted p-4 rounded-lg overflow-x-auto my-6">
                   {props.children}
                 </pre>
               ),

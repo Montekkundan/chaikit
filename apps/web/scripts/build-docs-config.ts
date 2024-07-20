@@ -46,6 +46,22 @@ const docsConfig: DocsConfig = {
         },
       ],
     },
+    {
+      title: "Guides",
+      slug: "guides",
+      items: [
+        {
+          title: "Getting Started",
+          href: "/guides",
+        },
+        {
+          title: "Animations",
+          items: [
+            { title: "Tag", href: "/guides/tag" },
+          ]
+        },
+      ],
+    },
   ],
 };
 
