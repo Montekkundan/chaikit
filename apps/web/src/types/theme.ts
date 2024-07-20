@@ -1,3 +1,4 @@
+// @ts-ignore
 import type { CssColor } from "@adobe/leonardo-contrast-colors";
 
 type ColorShades = {

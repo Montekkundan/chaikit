@@ -1,24 +1,23 @@
 import type { DocAspect, DocType } from "@/types/docs";
 import { removeLastS } from "./string";
 
-export const getDocTypeFromSlug = (slug?: string | string[]): DocType => {
+export const getDocTypeFromSlug = (slug?: string | string[]): DocType | undefined => {
   if (!slug) return undefined;
   if (Array.isArray(slug)) {
-    return removeLastS(slug[0]) as DocType;
+    const firstSlug = slug[0];
+    return firstSlug ? (removeLastS(firstSlug) as DocType) : undefined;
   }
-  return removeLastS(slug.split("/")[0]) as DocType;
+  const firstPart = slug.split("/")[0];
+  return firstPart ? (removeLastS(firstPart) as DocType) : undefined;
 };
 
 export const getAspectFromType = (type: DocType): DocAspect => {
   switch (type) {
     case "hook":
-      return "video";
     case "component":
       return "video";
     case "page":
-      return "page";
     case "template":
-      return "page";
     case "block":
       return "page";
     default:

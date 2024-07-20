@@ -41,7 +41,7 @@ const CodeBlockClient = ({
   const handleExpand = () => {
     const prevState = isExpanded;
     if (prevState) {
-      setActiveTab(files[0].fileName);
+      setActiveTab(files[0]?.fileName ?? "");
     }
     setExpanded(!prevState);
   };
@@ -78,7 +78,7 @@ const CodeBlockClient = ({
       </CodeBlockHeader>
       <CodeBlockBody className={cn(isExpanded ? "max-h-[400px]" : "max-h-[200px]")}>
         {preview && !isExpanded ? (
-          <TabPanel id={files[0].fileName} className="!mt-0">
+          <TabPanel id={files[0]?.fileName ?? ""} className="!mt-0">
             {preview}
           </TabPanel>
         ) : (

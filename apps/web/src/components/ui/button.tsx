@@ -81,13 +81,14 @@ interface ButtonProps
   isLoading?: boolean;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>; // Added onClick prop
 }
 
 const Button = React.forwardRef(
   (localProps: ButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) => {
     const contextProps = useButtonContext();
     const props = { ...contextProps, ...localProps };
-    const { className, variant, size, shape, isDisabled, isLoading, prefix, suffix, ...restProps } =
+    const { className, variant, size, shape, isDisabled, isLoading, prefix, suffix, onClick, ...restProps } =
       props;
     const Element: React.ElementType = props.href ? AriaLink : AriaButton;
     return (
@@ -95,6 +96,7 @@ const Button = React.forwardRef(
         ref={ref}
         {...restProps}
         isDisabled={isDisabled || isLoading}
+        onClick={onClick} // Pass onClick to the Element
         className={buttonStyles({ variant, size, shape, className })}
       >
         {composeRenderProps(props.children, (children) => (
