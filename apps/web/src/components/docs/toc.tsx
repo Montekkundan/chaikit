@@ -3,6 +3,8 @@
 import * as React from "react";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
+import { ExternalLinkIcon } from "lucide-react";
 
 
 interface Item {
@@ -11,23 +13,23 @@ interface Item {
   items?: Item[];
 }
 
-interface TableOfContents {
+interface TableofContents {
   items?: Item[];
 }
 
 interface TocProps {
-  toc: TableOfContents;
+  toc: TableofContents;
+  slug: string[]; 
 }
-
-export function TableOfContents({ toc }: TocProps) {
+export function TableOfContents({ toc, slug }: TocProps) {
   const itemIds = React.useMemo(
     () =>
       toc.items
         ? toc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
-            .flat()
-            .filter(Boolean)
-            .map((id) => id?.split("#")[1])
+          .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
+          .flat()
+          .filter(Boolean)
+          .map((id) => id?.split("#")[1])
         : [],
     [toc]
   );
@@ -38,12 +40,36 @@ export function TableOfContents({ toc }: TocProps) {
     return null;
   }
 
+  const metadata = {
+    links: [
+      {
+        label: "Edit this page on GitHub",
+        href: `https://github.com/chaikitxyz/chaikit/tree/docs/apps/web/content/${slug.join('/')}.mdx`,
+      },
+      {
+        label: "Report an issue",
+        href: "https://github.com/chaikitxyz/chaikit/issues/new"
+      },
+    ],
+  }
+
   return (
     <div className="space-y-2">
       <p className="font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading ?? undefined} />
-      
-
+      <hr className="pt-4" />
+      {metadata.links.map((link, index) => (
+        <Button
+          key={index}
+          href={link.href}
+          suffix={<ExternalLinkIcon />}
+          size="sm"
+          className="h-6 text-xs w-full font-semibold [&_svg]:size-3"
+          target="_blank"
+        >
+          {link.label}
+        </Button>
+      ))}
     </div>
   );
 }
@@ -84,14 +110,14 @@ function useActiveItem(itemIds: string[]) {
 }
 
 interface TreeProps {
-  tree: TableOfContents;
+  tree: TableofContents;
   level?: number;
   activeItem?: string;
 }
 
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
   return tree?.items?.length && level < 3 ? (
-    <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
+    <ul className={cn("m-0 list-none pb-4", { "pl-4": level !== 1 })}>
       {tree.items.map((item, index) => {
         return (
           <li key={index} className={cn("mt-0 pt-2")}>

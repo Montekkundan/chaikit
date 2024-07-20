@@ -36,7 +36,6 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
 
 export default async function Page({ params }: PageProps) {
   const doc = await getDocFromSlug(params.slug);
-
   if (!doc) {
     notFound();
   }
@@ -98,7 +97,7 @@ export default async function Page({ params }: PageProps) {
           <div className="sticky top-0">
             <ScrollArea className="h-screen pb-8">
               <div className="pb-16 pt-6">
-                <TableOfContents toc={doc.toc} />
+                <TableOfContents toc={doc.toc} slug={params.slug} />
               </div>
             </ScrollArea>
           </div>

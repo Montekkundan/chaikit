@@ -21,14 +21,13 @@ const docsConfig: DocsConfig = {
       slug: "docs",
       items: [
         {
-          title: "Installation",
-          href: "/docs/installation",
-        },
-        {
           title: "Introduction",
           href: "/docs/introduction",
         },
-
+        {
+          title: "Installation",
+          href: "/docs/installation",
+        },
       ],
     },
     {

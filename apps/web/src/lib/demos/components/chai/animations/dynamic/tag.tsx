@@ -7,7 +7,6 @@ export default function Tagdemo() {
   return (
     <div className="items-center justify-center md:h-auto dark:bg-black bg-white relative w-full">
     <Tag/>
-   
   </div>  
   );
 }
