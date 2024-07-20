@@ -268,6 +268,73 @@ const config = {
   plugins: [require("tailwindcss-animate"),
      require("tailwindcss-react-aria-components"),
      addVariablesForColors,
+     function ({ addUtilities }: any) {
+      addUtilities({
+        '.data-dragging .data-scrollable [data-direction="top"]': {
+          overflowY: 'hidden !important',
+        },
+        '.data-dragging .data-scrollable [data-direction="bottom"]': {
+          overflowY: 'hidden !important',
+        },
+        '.data-dragging .data-scrollable [data-direction="left"]': {
+          overflowX: 'hidden !important',
+        },
+        '.data-dragging .data-scrollable [data-direction="right"]': {
+          overflowX: 'hidden !important',
+        },
+        '[data-drawer]::after': {
+          content: '""',
+          position: 'absolute',
+          background: 'inherit',
+          backgroundColor: 'inherit',
+        },
+        '[data-drawer][data-direction="top"]::after': {
+          top: 'initial',
+          bottom: '100%',
+          left: '0',
+          right: '0',
+          height: '200%',
+        },
+        '[data-drawer][data-direction="bottom"]::after': {
+          top: '100%',
+          bottom: 'initial',
+          left: '0',
+          right: '0',
+          height: '200%',
+        },
+        '[data-drawer][data-direction="left"]::after': {
+          left: 'initial',
+          right: '100%',
+          top: '0',
+          bottom: '0',
+          width: '200%',
+        },
+        '[data-drawer][data-direction="right"]::after': {
+          left: '100%',
+          right: 'initial',
+          top: '0',
+          bottom: '0',
+          width: '200%',
+        },
+        '@media (hover: hover) and (pointer: fine)': {
+          '[data-drawer]': {
+            userSelect: 'none',
+          },
+        },
+        '@media (pointer: fine)': {
+          '[data-handle-hitarea]': {
+            width: '100%',
+            height: '100%',
+          },
+        },
+        '.shiki': {
+          backgroundColor: 'transparent !important',
+        },
+        '.shiki span': {
+          backgroundColor: 'transparent !important',
+        },
+      });
+    },
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
         {
