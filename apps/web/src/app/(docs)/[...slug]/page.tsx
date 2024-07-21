@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ExternalLinkIcon } from "lucide-react";
+import { BookOpen, ExternalLinkIcon } from "lucide-react";
 import { TableOfContents } from "@/components/docs/toc";
 import { Mdx } from "@/components/mdx/mdx-remote";
 import { Breadcrumbs, Breadcrumb } from "@/components/ui/breadcrumb";
@@ -65,18 +65,21 @@ export default async function Page({ params }: PageProps) {
         <p className="mt-2 text-fg-muted">{metadata.description}</p>
         {metadata.links && metadata.links.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
-            {metadata.links.map((link, index) => (
-              <Button
-                key={index}
-                href={link.href}
-                suffix={<ExternalLinkIcon />}
-                size="sm"
-                className="h-6 text-xs font-semibold [&_svg]:size-3"
-                target="_blank"
-              >
-                {link.label}
-              </Button>
-            ))}
+            {metadata.links.map((link, index) => {
+              const isExternal = link.isExternal !== undefined ? link.isExternal : true;
+              return (
+                <Button
+                  key={index}
+                  href={link.href}
+                  suffix={isExternal ? <ExternalLinkIcon /> : <BookOpen />}
+                  size="sm"
+                  className="h-6 text-xs font-semibold [&_svg]:size-3"
+                  target={isExternal ? "_blank" : undefined}
+                >
+                  {link.label}
+                </Button>
+              );
+            })}
           </div>
         )}
         {categories && categories.length > 0 && (

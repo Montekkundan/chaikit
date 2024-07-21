@@ -8,6 +8,7 @@ export type DocAspect = "video" | "page";
 interface DocLink {
   label: string;
   href: string;
+  isExternal?: boolean;
 }
 
 interface Thumbnail {
