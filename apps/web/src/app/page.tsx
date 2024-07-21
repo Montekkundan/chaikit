@@ -1,5 +1,4 @@
 import { CopyButton } from "@/components/copy-button";
-import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 

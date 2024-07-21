@@ -27,7 +27,7 @@ export const Header = () => {
                 scrolled && "pointer-events-none"
             )}
         >
-            <div className="container flex h-full max-w-screen-2xl items-center">
+            <div className="z-50 container flex h-full max-w-screen-2xl items-center">
                 {/* Desktop Nav */}
                 <div className="hidden w-full items-center justify-between md:flex">
                     <div className="w-[130px]">

@@ -49,6 +49,7 @@ const DialogRoot = (props: DialogRootProps) => {
 interface DialogProps extends DialogContentProps {
   title?: string;
   description?: string;
+  overlayClassName?: string;
   type?: OverlayProps["type"];
   showDismissButton?: OverlayProps["showDismissButton"];
   mobileType?: OverlayProps["mobileType"];
@@ -63,6 +64,7 @@ const Dialog = ({
   mediaQuery,
   isDismissable: isDismissableProp,
   showDismissButton,
+  overlayClassName,
   ...props
 }: DialogProps) => {
   const isDismissable = isDismissableProp ?? (props.role === "alertdialog" ? false : true);
@@ -71,6 +73,7 @@ const Dialog = ({
       isDismissable={isDismissable}
       showDismissButton={showDismissButton}
       type={type}
+      className={overlayClassName}
       mobileType={mobileType}
       mediaQuery={mediaQuery}
     >
