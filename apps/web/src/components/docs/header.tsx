@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
@@ -42,7 +41,7 @@ export const Header = () => {
                         >
 
                             <div className="mt-1 font-josephin whitespace-nowrap font-bold leading-normal tracking-tighter">
-                                {siteConfig.title}
+                            <Icons.logo className="h-6 w-6" />
                             </div>
                             <Badge className="border">
                                 beta
@@ -103,15 +102,15 @@ export const Header = () => {
                         href="/"
                         className={cn(
                             focusRing(),
-                            "flex w-[130px] items-center space-x-2 rounded transition-opacity hover:opacity-80"
+                            "flex items-center space-x-2 rounded transition-opacity hover:opacity-80"
                         )}
                     >
                         <div className="mt-1 font-josephin font-bold leading-normal tracking-tighter">
-                            {siteConfig.title}
+                        <Icons.logo className="h-6 w-6" />
                         </div>
 
                     </Link>
-                    <SearchDocs className="flex-1" size="sm">
+                    <SearchDocs className="flex-1 mx-6" size="sm">
                         <span className="mr-4 flex-1 text-left">Search...</span>
                     </SearchDocs>
                     <DialogRoot>
@@ -169,15 +168,6 @@ const Nav = (props: NavProps) => {
                             href={item.href}
                             onClick={onNavItemClick}
                         >
-                            {item.href === "/" && (
-                                <Image
-                                    src={siteConfig.logo}
-                                    alt={siteConfig.name}
-                                    loading="lazy"
-                                    width={24}
-                                    height={24}
-                                />
-                            )}
                             <span>{item.label}</span>
                         </Link>
                     )

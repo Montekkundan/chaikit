@@ -55,7 +55,7 @@ const docsConfig: DocsConfig = {
           href: "/guides",
         },
         {
-          title: "Animations",
+          title: "3dAnimations",
           items: [
             { title: "Tag", href: "/guides/tag" },
           ]
