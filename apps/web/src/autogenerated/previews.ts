@@ -7,6 +7,6 @@ import dynamic from 'next/dynamic';
 export const previews = {
   "demos/components/chai/animations/dynamic/tag": {
       component: dynamic(() => import("@/lib/demos/components/chai/animations/dynamic/tag"), { ssr: false }),
-      code : [{"title":"tag.tsx","code":"\"use client\";\r\nimport React from \"react\";\r\n\r\nimport Tag from \"@/lib/components/chai/tag\";\r\n\r\nexport default function Tagdemo() {\r\n  return (\r\n    <div className=\"items-center justify-center md:h-auto dark:bg-black bg-white relative w-full\">\r\n    <Tag/>\r\n   \r\n  </div>  \r\n  );\r\n}\r\n"}]
+      code : [{"title":"tag.tsx","code":"\"use client\";\r\nimport React from \"react\";\r\n\r\nimport Tag from \"@/lib/components/chai/tag\";\r\n\r\nexport default function Tagdemo() {\r\n  return (\r\n    <div className=\"items-center justify-center md:h-auto dark:bg-black bg-white relative w-full\">\r\n    <Tag/>\r\n  </div>  \r\n  );\r\n}\r\n"}]
     },
   }
