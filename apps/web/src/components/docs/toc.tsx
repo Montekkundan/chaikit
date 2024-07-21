@@ -44,7 +44,7 @@ export function TableOfContents({ toc, slug }: TocProps) {
     links: [
       {
         label: "Edit this page on GitHub",
-        href: `https://github.com/chaikitxyz/chaikit/tree/docs/apps/web/content/${slug.join('/')}.mdx`,
+        href: `https://github.com/chaikitxyz/chaikit/tree/main/apps/web/content/${slug.join('/')}.mdx`,
       },
       {
         label: "Report an issue",
