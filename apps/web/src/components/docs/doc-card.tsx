@@ -79,8 +79,7 @@ const Thumbnail = ({
   const isInView = useInView(ref);
   const debouncedInView = useDebounce(isInView, 1500);
 
-  if (!thumbnail)
-    return <div className={cn("aspect-video w-full", aspect === "page" && "aspect-[9/11]")} />;
+  if (!thumbnail) return null;
 
   if (thumbnail?.video) {
     return (

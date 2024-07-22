@@ -3,8 +3,6 @@ import path from "path";
 import { rimraf } from "rimraf";
 import type { DocsConfig } from "@/types/docs";
 
-// import { getDocs } from "@/server/docs";
-
 // const getCategoryDocs = (category: string) => {
 //   return getDocs(category).map((category) => ({
 //     title: category.title,
@@ -25,8 +23,8 @@ const docsConfig: DocsConfig = {
           href: "/docs/introduction",
         },
         {
-          title: "Installation",
-          href: "/docs/installation",
+          title: "Chaikit CLI",
+          href: "/docs/chaikit-cli",
         },
       ],
     },
@@ -58,6 +56,22 @@ const docsConfig: DocsConfig = {
           title: "3dAnimations",
           items: [
             { title: "Tag", href: "/guides/tag" },
+          ]
+        },
+      ],
+    },
+    {
+      title: "Pages",
+      slug: "pages",
+      items: [
+        {
+          title: "Getting Started",
+          href: "/pages",
+        },
+        {
+          title: "Homepage",
+          items: [
+            { title: "Team", href: "/pages/homepage/team" },
           ]
         },
       ],

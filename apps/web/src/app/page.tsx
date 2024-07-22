@@ -1,6 +1,6 @@
 import { CopyButton } from "@/components/copy-button";
+import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 
 const Scene = dynamic(() => import("@/components/scene"), {
   ssr: false,
@@ -9,13 +9,19 @@ const Scene = dynamic(() => import("@/components/scene"), {
 export default function Home() {
   return (
     <main className="relative flex flex-col h-screen">
-      <div className="z-20 absolute inset-x-0 top-1/6 flex flex-col items-center">
-        {/* <Link href="/template" className=""> */}
-          <Link href="/template" className="px-8 py-2 rounded-full relative hover:bg-slate-700 bg-slate-700 text-white text-sm hover:shadow-xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
+      <div className="z-20 gap-x-2 absolute inset-x-0 top-1/6 flex flex-row justify-center items-center">
+          <Button href="/template" className="px-2 md:px-8 py-2 rounded-full relative hover:bg-slate-700 bg-slate-700 text-white text-sm hover:shadow-xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
             <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
             Templates
-          </Link>
-        {/* </Link> */}
+          </Button>
+          <Button href="/components" className="px-2 md:px-8 py-2 rounded-full relative hover:bg-slate-700 bg-slate-700 text-white text-sm hover:shadow-xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
+            <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
+            Components
+          </Button>
+          <Button href="/pages" className="px-2 md:px-8 py-2 rounded-full relative hover:bg-slate-700 bg-slate-700 text-white text-sm hover:shadow-xl hover:shadow-white/[0.1] transition duration-200 border border-slate-600">
+            <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
+            Pages
+          </Button>
         {/*  buttons  */}
       </div>
       <div className="absolute mt-4 inset-x-0 top-1/5 flex flex-col items-center">
