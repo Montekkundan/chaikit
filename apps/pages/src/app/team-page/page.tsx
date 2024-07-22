@@ -20,7 +20,7 @@ function TeamTagdemo() {
                             Maker Shoutouts
                         </span>
                         <span className="w-full">
-                            This couldn&#39;t have been built this without...
+                            This couldn&#39;t have been built without...
                         </span>
                     </div>
                     <div className="flex m-6 md:m-0 flex-col flex-wrap items-center gap-4 rounded border border-solid border-white shadow-sm">
@@ -28,19 +28,19 @@ function TeamTagdemo() {
                             <Shoutout
                                 image="/images/vercel.svg"
                                 title="Vercel"
-                                desc="For the tag tutorial."
+                                desc="For tag tutorial."
                             />
                             <div className="flex w-px flex-none flex-col items-center gap-2 self-stretch" />
                             <Shoutout
                                 image="/images/basementstudio.png"
                                 title="Basement Studio"
-                                desc="For the blogs and tutorial."
+                                desc="For blogs and tutorial."
                             />
                             <div className="flex w-px flex-none flex-col items-center gap-2 self-stretch " />
                             <Shoutout
                                 image="/images/shadcn.svg"
                                 title="Shadcn UI"
-                                desc="For the inspiration."
+                                desc="For inspiration."
                             />
                         </div>
                     </div>
