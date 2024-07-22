@@ -13,7 +13,7 @@ export const siteConfig = {
     header: {
       nav: {
         links: [
-          { href: "/docs/installation", label: "Docs" },
+          { href: "/docs/introduction", label: "Docs" },
           { href: "/components", label: "Components" },
           { href: "/guides", label: "Guides" },
           { href: "/pages", label: "Pages" },
