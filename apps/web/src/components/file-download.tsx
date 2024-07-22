@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { ExternalLinkIcon } from "lucide-react";
+import { Download } from "lucide-react";
 import { Button } from "./ui/button";
 
-export default function LinkPreview({
+export default function FileDownload({
   href,
   children,
 }: {
@@ -15,7 +15,7 @@ export default function LinkPreview({
       target="_blank"
     >
       {children}
-      <ExternalLinkIcon className="size-4" />
+      <Download className="size-4" />
     </Button>
   );
 }

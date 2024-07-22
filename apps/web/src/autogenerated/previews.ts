@@ -13,4 +13,8 @@ export const previews = {
       component: dynamic(() => import("@/lib/demos/components/chai/animations/dynamic/team-tag"), { ssr: false }),
       code : [{"title":"team-tag.tsx","code":"\"use client\";\r\nimport React from \"react\";\r\n\r\nimport TeamTag from \"@/lib/components/chai/team-tag\";\r\n\r\nexport default function Tagdemo() {\r\n  return (\r\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\r\n    <TeamTag/>\r\n  </div>  \r\n  );\r\n}\r\n"}]
     },
+    "demos/components/chai/animations/dynamic/tag-user": {
+      component: dynamic(() => import("@/lib/demos/components/chai/animations/dynamic/tag-user"), { ssr: false }),
+      code : [{"title":"tag-user.tsx","code":"\"use client\";\r\nimport React from \"react\";\r\n\r\nimport TagUser from \"@/lib/components/chai/tag-user\";\r\n\r\nexport default function TagUserdemo() {\r\n  return (\r\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\r\n    <TagUser/>\r\n  </div>  \r\n  );\r\n}\r\n"}]
+    },
   }

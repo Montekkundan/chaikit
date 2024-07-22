@@ -65,7 +65,7 @@ const docsConfig: DocsConfig = {
       slug: "pages",
       items: [
         {
-          title: "Getting Started",
+          title: "About",
           href: "/pages",
         },
         {

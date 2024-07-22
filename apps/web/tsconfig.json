@@ -19,7 +19,7 @@
     ".next/types/**/*.ts",
     "tailwind.config.js",
     "src/lib/hooks/use-mounted.ts"
-  ],
+, "src/lib/components/chai/tag-user.jsx"  ],
 
   "exclude": ["node_modules"]
 }

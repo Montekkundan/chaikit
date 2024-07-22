@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
 import { Code } from "../code";
 import { ComponentSourcej } from "../component-sourcejs";
 import { Alert } from "../ui/alert";
-import Linkpreview from "../link-preview";
+import LinkPreview from "../link-preview";
+import FileDownload from "../file-download";
 
 export const Link = ({
   className,
@@ -85,7 +86,7 @@ export const components: React.ComponentPropsWithoutRef<typeof MDXRemote>["compo
     />
   ),
   img: ({ className, alt, ...props }) => (
-    <img className={cn("mx-auto max-w-md rounded-md border", className)} alt={alt} {...props} />
+    <img className={cn("max-w-sm rounded-md border", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }) => <hr className="my-4 md:my-8" {...props} />,
   pre: ({ className, ...props }) => (
@@ -133,8 +134,11 @@ export const components: React.ComponentPropsWithoutRef<typeof MDXRemote>["compo
       <div className="flex flex-wrap items-center gap-2">{children}</div>
     </td>
   ),
-  Linkpreview :(props: { href: string; children: React.ReactNode }) =>(
-    <Linkpreview {...props}  />
+  LinkPreview :(props: { href: string; children: React.ReactNode }) =>(
+    <LinkPreview {...props}  />
+  ),
+  FileDownload :(props: { href: string; children: React.ReactNode }) =>(
+    <FileDownload {...props}  />
   ),
   ComponentSource: ({ name, ...rest }: { name: string }) => (
     <ComponentSource name={name} className="w-full [&:not(:first-child)]:mt-4" {...rest} />
