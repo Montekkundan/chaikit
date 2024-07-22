@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { Code } from "../code";
 import { ComponentSourcej } from "../component-sourcejs";
 import { Alert } from "../ui/alert";
+import Linkpreview from "../link-preview";
 
 export const Link = ({
   className,
@@ -131,6 +132,9 @@ export const components: React.ComponentPropsWithoutRef<typeof MDXRemote>["compo
     >
       <div className="flex flex-wrap items-center gap-2">{children}</div>
     </td>
+  ),
+  Linkpreview :(props: { href: string; children: React.ReactNode }) =>(
+    <Linkpreview {...props}  />
   ),
   ComponentSource: ({ name, ...rest }: { name: string }) => (
     <ComponentSource name={name} className="w-full [&:not(:first-child)]:mt-4" {...rest} />
