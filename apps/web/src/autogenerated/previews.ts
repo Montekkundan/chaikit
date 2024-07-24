@@ -7,14 +7,14 @@ import dynamic from 'next/dynamic';
 export const previews = {
   "demos/components/chai/animations/dynamic/tag": {
       component: dynamic(() => import("@/lib/demos/components/chai/animations/dynamic/tag"), { ssr: false }),
-      code : [{"title":"tag.tsx","code":"\"use client\";\r\nimport React from \"react\";\r\n\r\nimport Tag from \"@/lib/components/chai/tag\";\r\n\r\nexport default function Tagdemo() {\r\n  return (\r\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\r\n    <Tag/>\r\n  </div>  \r\n  );\r\n}\r\n"}]
+      code : [{"title":"tag.tsx","code":"\"use client\";\nimport React from \"react\";\n\nimport Tag from \"@/lib/components/chai/tag\";\n\nexport default function Tagdemo() {\n  return (\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\n    <Tag/>\n  </div>  \n  );\n}\n"}]
     },
     "demos/components/chai/animations/dynamic/team-tag": {
       component: dynamic(() => import("@/lib/demos/components/chai/animations/dynamic/team-tag"), { ssr: false }),
-      code : [{"title":"team-tag.tsx","code":"\"use client\";\r\nimport React from \"react\";\r\n\r\nimport TeamTag from \"@/lib/components/chai/team-tag\";\r\n\r\nexport default function Tagdemo() {\r\n  return (\r\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\r\n    <TeamTag/>\r\n  </div>  \r\n  );\r\n}\r\n"}]
+      code : [{"title":"team-tag.tsx","code":"\"use client\";\nimport React from \"react\";\n\nimport TeamTag from \"@/lib/components/chai/team-tag\";\n\nexport default function Tagdemo() {\n  return (\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\n    <TeamTag/>\n  </div>  \n  );\n}\n"}]
     },
     "demos/components/chai/animations/dynamic/tag-user": {
       component: dynamic(() => import("@/lib/demos/components/chai/animations/dynamic/tag-user"), { ssr: false }),
-      code : [{"title":"tag-user.tsx","code":"\"use client\";\r\nimport React from \"react\";\r\n\r\nimport TagUser from \"@/lib/components/chai/tag-user\";\r\n\r\nexport default function TagUserdemo() {\r\n  return (\r\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\r\n    <TagUser/>\r\n  </div>  \r\n  );\r\n}\r\n"}]
+      code : [{"title":"tag-user.tsx","code":"\"use client\";\nimport React from \"react\";\n\nimport TagUser from \"@/lib/components/chai/tag-user\";\n\nexport default function TagUserdemo() {\n  return (\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\n    <TagUser/>\n  </div>  \n  );\n}\n"}]
     },
   }

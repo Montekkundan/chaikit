@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "pnpm build:scripts && next build",
-    "build:scripts": "pnpm build:tt && build:components && pnpm build:docs-config && pnpm build:previews",
+    "build:scripts": "pnpm build:tt && pnpm build:components && pnpm build:docs-config && pnpm build:previews",
     "build:previews": "tsx ./scripts/build-previews.ts",
     "build:docs-config": "tsx ./scripts/build-docs-config.ts",
     "postbuild": "next-sitemap",
