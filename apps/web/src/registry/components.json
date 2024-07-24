@@ -1,0 +1,44 @@
+[
+  {
+    "name": "tag",
+    "dependencies": [
+        "@react-three/fiber",
+        "three",
+        "@react-three/drei",
+        "@react-three/rapier",
+        "meshline",
+        "leva"
+    ],
+    "devDependencies": [],
+    "files": ["/lib/components/chai/tag.jsx"],
+    "additionalFiles": []
+  },
+  {
+    "name": "tagteam",
+    "dependencies": [
+        "@react-three/fiber",
+        "three",
+        "@react-three/drei",
+        "@react-three/rapier",
+        "meshline",
+        "leva"
+    ],
+    "devDependencies": [],
+    "files": ["/lib/components/chai/team-tag.jsx"],
+    "additionalFiles": []
+  },
+  {
+    "name": "taguser",
+    "dependencies": [
+        "@react-three/fiber",
+        "three",
+        "@react-three/drei",
+        "@react-three/rapier",
+        "meshline",
+        "leva"
+    ],
+    "devDependencies": [],
+    "files": ["/lib/components/chai/tag-user.jsx"],
+    "additionalFiles": []
+  }
+]
