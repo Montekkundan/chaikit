@@ -8,6 +8,7 @@ import TemplateSkeleton from '@/components/template/template-skeleton';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Template as TTemplate } from '@/types/template';
 import templatesData from '@/registry/template.json';
+import { SiteHeader } from "@/components/site-header"
 
 const useCaseFilters = ["AI", "Portfolio", "Blog", "Ecommerce"];
 const frameworkFilters = ["React", "Vue", "Angular", "Svelte"];
@@ -111,6 +112,7 @@ export default function Home() {
 
   return (
     <main className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+      <SiteHeader />
       <div className='flex flex-col items-center justify-center pb-6 pt-24 gap-y-6'>
         <h1 className='text-6xl font-bold tracking-tight'>
           Find your Template

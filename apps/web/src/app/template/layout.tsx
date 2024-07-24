@@ -7,7 +7,7 @@ export default function TemplateLayout({
   }) {
     return (
       <>
-      <SiteHeader />
+      {/* <SiteHeader /> */}
       {children}
       </>
     )

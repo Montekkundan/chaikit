@@ -7,6 +7,8 @@ import { Analytics } from "@/components/analytics";
 import { cn } from "@/lib/utils";
 import { SiteFooter } from "@/components/site-footer";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 
 
 export const metadata: Metadata = {
@@ -70,12 +72,14 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
+    <SessionProvider session={session}>
     <html lang="en" suppressHydrationWarning>
       <Head >
         <link rel="manifest" href={`${siteConfig.url}/site.webmanifest`} />
@@ -106,5 +110,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </SessionProvider>
   );
 }
