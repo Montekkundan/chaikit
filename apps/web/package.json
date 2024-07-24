@@ -17,7 +17,8 @@
     "prisma:migrate:deploy": "pnpm prisma migrate deploy",
     "prisma:migrate:reset": "pnpm prisma migrate reset --force",
     "prisma:studio": "pnpm prisma studio",
-    "prisma:db:push": "pnpm prisma db push"
+    "prisma:db:push": "pnpm prisma db push",
+    "postinstall": "pnpm prisma generate"
   },
   "dependencies": {
     "@auth/core": "^0.34.1",
