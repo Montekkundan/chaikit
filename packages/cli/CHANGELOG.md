@@ -1,5 +1,11 @@
 # chaikit
 
+## 3.1.0
+
+### Minor Changes
+
+- pour commmand now adds relevant glb jpg jpeg png files with main code file
+
 ## 3.0.0
 
 ### Major Changes
