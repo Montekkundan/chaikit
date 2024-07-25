@@ -1,5 +1,11 @@
 # chaikit
 
+## 3.0.0
+
+### Major Changes
+
+- added pour command to download components from chaikit.xyz/components! enjoy the chai!
+
 ## 2.1.0
 
 ### Minor Changes
