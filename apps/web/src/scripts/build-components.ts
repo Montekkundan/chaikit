@@ -5,6 +5,7 @@ interface Component {
   name: string;
   dependencies: string[];
   devDependencies: string[];
+  types: string[];
   files: string[];
   additionalFiles?: string[];
 }
@@ -37,6 +38,7 @@ componentsData.forEach((component) => {
     name: component.name,
     dependencies: component.dependencies,
     devDependencies: component.devDependencies,
+    types: component.types,
     files: filesContent
   };
 

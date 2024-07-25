@@ -9,6 +9,10 @@
     "leva"
   ],
   "devDependencies": [],
+  "types": [
+    "react",
+    "nextjs"
+  ],
   "files": [
     {
       "name": "tag.jsx",

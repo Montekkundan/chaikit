@@ -9,6 +9,7 @@
         "meshline",
         "leva"
     ],
+    "types": ["react", "nextjs"],
     "devDependencies": [],
     "files": ["/lib/components/chai/tag.jsx"],
     "additionalFiles": []
@@ -23,6 +24,7 @@
         "meshline",
         "leva"
     ],
+    "types": ["react", "nextjs"],
     "devDependencies": [],
     "files": ["/lib/components/chai/team-tag.jsx"],
     "additionalFiles": []
@@ -37,6 +39,7 @@
         "meshline",
         "leva"
     ],
+    "types": ["react", "nextjs"],
     "devDependencies": [],
     "files": ["/lib/components/chai/tag-user.jsx"],
     "additionalFiles": []
