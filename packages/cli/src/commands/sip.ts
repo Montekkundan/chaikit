@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import inquirer from 'inquirer';
 import fs from 'fs-extra';
 import path from 'path';
+import chalk from 'chalk';
 import { Templates } from '../types.js';
 
 const baseUrl = process.env.REGISTRY_URL ?? 'https://chaikit.xyz/__registry__/template.json';
@@ -26,11 +27,11 @@ function installDependencies(packageManager: string) {
   }[packageManager];
 
   if (!command) {
-    console.log('Invalid package manager');
+    console.log(chalk.red('Invalid package manager'));
     return;
   }
 
-  console.log(`Running "${command}"...`);
+  console.log(chalk.yellow(`Running "${command}"...`));
   execSync(command, { stdio: 'inherit' });
 }
 
@@ -86,29 +87,29 @@ const sip = new Command('sip')
             }
           );
 
-          console.log(
+          console.log(chalk.yellow(
             `Filtered templates by ${options.filter}=${options.value}:`
-          );
+          ));
           filteredTemplates.forEach(([slug, template]) => {
-            console.log(`- ${slug}: ${template.templateName}`);
+            console.log(chalk.green(`- ${slug}: ${template.templateName}`));
           });
         } else {
-          console.log('All templates:');
+          console.log(chalk.yellow('All templates:'));
           Object.entries(templates).forEach(([slug, template]) => {
-            console.log(`- ${slug}: ${template.templateName}`);
+            console.log(chalk.green(`- ${slug}: ${template.templateName}`));
           });
         }
         return;
       }
 
       if (!slug) {
-        console.log('Please provide a slug or use the --list option to list all templates.');
+        console.log(chalk.red('Please provide a slug or use the --list option to list all templates.'));
         return;
       }
       const template = templates[slug];
 
       if (!template) {
-        console.log(`Template with slug "${slug}" not found.`);
+        console.log(chalk.red(`Template with slug "${slug}" not found.`));
         return;
       }
 
@@ -128,9 +129,9 @@ const sip = new Command('sip')
 
       for (const [option, key] of Object.entries(detailOptions)) {
         if (options[option]) {
-          console.log(
+          console.log(chalk.yellow(
             `${key}: ${template[key as keyof typeof template] || 'none'}`
-          );
+          ));
           detailsDisplayed = true;
         }
       }
@@ -154,7 +155,7 @@ const sip = new Command('sip')
 
       const targetDirPath = path.resolve(targetDir);
 
-      console.log(`Cloning repository from ${template.githubUrl}...`);
+      console.log(chalk.yellow(`Cloning repository from ${template.githubUrl}...`));
       execSync(`git clone ${template.githubUrl} ${targetDir}`, { stdio: 'inherit' });
 
       // Remove the .git folder, but keep .gitignore file
@@ -189,10 +190,10 @@ const sip = new Command('sip')
         installDependencies(packageManager);
       }
 
-      console.log(`Chai served! Go to your project with cd ${targetDir}`);
+      console.log(chalk.green(`Chai served! Go to your project with cd ${targetDir}`));
 
     } catch (error) {
-      console.error('An error occurred:', (error as Error).message);
+      console.error(chalk.red('An error occurred:'), (error as Error).message);
     }
   });
 

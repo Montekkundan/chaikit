@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import { Command } from 'commander';
 import fetch from 'node-fetch';
+import chalk from 'chalk';
 import { getPackageInfo } from '../utils/get-package-info.js';
 
 const checkForUpdates = async () => {
@@ -15,7 +16,7 @@ const checkForUpdates = async () => {
     const data: any = await response.json();
     return data['dist-tags'].latest;
   } catch (error) {
-    console.error('An error occurred while checking for updates:', (error as Error).message);
+    console.error(chalk.red('An error occurred while checking for updates:'), (error as Error).message);
     return null;
   }
 };
@@ -30,7 +31,7 @@ const update = new Command('update')
     const packageManager = options.packageManager;
 
     if (!validPackageManagers.includes(packageManager)) {
-      console.error('Invalid package manager specified. Please use npm, yarn, pnpm, or bun.');
+      console.error(chalk.red('Invalid package manager specified. Please use npm, yarn, pnpm, or bun.'));
       return;
     }
 
@@ -38,14 +39,14 @@ const update = new Command('update')
     const latestVersion = await checkForUpdates();
 
     if (!latestVersion) {
-      console.log('Unable to determine the latest version.');
+      console.log(chalk.red('Unable to determine the latest version.'));
       return;
     }
 
     if (currentVersion === latestVersion) {
-      console.log(`You are already using the latest version (${currentVersion}).`);
+      console.log(chalk.green(`You are already using the latest version (${currentVersion}).`));
     } else {
-      console.log(`A new version (${latestVersion}) is available. Updating...`);
+      console.log(chalk.yellow(`A new version (${latestVersion}) is available. Updating...`));
 
       const installCommands: { [key: string]: string } = {
         npm: 'npm install -g chaikit',
@@ -59,12 +60,12 @@ const update = new Command('update')
       if (installCommand) {
         try {
           execSync(installCommand, { stdio: 'inherit' });
-          console.log('Update successful!');
+          console.log(chalk.green('Update successful!'));
         } catch (error) {
-          console.error('An error occurred while updating:', (error as Error).message);
+          console.error(chalk.red('An error occurred while updating:'), (error as Error).message);
         }
       } else {
-        console.error('Invalid package manager specified. Please use npm, yarn, pnpm, or bun.');
+        console.error(chalk.red('Invalid package manager specified. Please use npm, yarn, pnpm, or bun.'));
       }
     }
   });

@@ -4,6 +4,7 @@ import { Command } from "commander";
 import { getPackageInfo } from "./utils/get-package-info.js";
 import sip from "./commands/sip.js";
 import update from "./commands/update.js";
+import pour from "./commands/pour.js";
 
 process.on("SIGINT", () => process.exit(0));
 process.on("SIGTERM", () => process.exit(0));
@@ -28,6 +29,7 @@ async function main() {
     });
   program.addCommand(sip);
   program.addCommand(update);
+  program.addCommand(pour);
   program.parse();
 }
 
