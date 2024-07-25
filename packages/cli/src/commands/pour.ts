@@ -8,15 +8,18 @@ import chalk from "chalk";
 import { checkFramework, Framework } from "../utils/checkframework.js";
 import { createAndWriteFiles } from "../utils/fileUtils.js";
 
+interface FileContent {
+  name: string;
+  content: string;
+}
+
 interface Component {
   name: string;
   dependencies: string[];
   devDependencies: string[];
-  files: {
-    name: string;
-    content: string;
-  }[];
   types: string[];
+  files: FileContent[];
+  additionalFiles?: FileContent[];
 }
 
 const baseUrl = process.env.REGISTRY_URL ?? "https://chaikit.xyz/__registry__/components/index.json";
@@ -144,12 +147,25 @@ const pour = new Command("pour")
             {
               type: "input",
               name: "targetDir",
-              message: "Enter the target directory (use '.' for current directory):",
+              message: "Enter the target directory for code files (use '.' for current directory):",
               default: framework === "nextjs" ? (fs.existsSync("src") ? "src/components/chai" : "components/chai") : "components/chai",
             },
           ]);
 
-          createAndWriteFiles(targetDir, component.files);
+          const { assetsDir } = await inquirer.prompt([
+            {
+              type: "input",
+              name: "assetsDir",
+              message: "Enter the target directory for asset files (use '.' for current directory):",
+              default: framework === "nextjs" ? "public/models" : "public",
+            },
+          ]);
+
+          createAndWriteFiles(targetDir, component.files, assetsDir);
+
+          if (component.additionalFiles) {
+            createAndWriteFiles(targetDir, component.additionalFiles, assetsDir);
+          }
 
           const { installDeps } = await inquirer.prompt([
             {
