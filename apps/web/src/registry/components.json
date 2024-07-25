@@ -11,7 +11,11 @@
     ],
     "types": ["react", "nextjs"],
     "devDependencies": [],
-    "files": ["/lib/components/chai/tag.jsx"],
+    "files": [
+      "src/lib/components/chai/tag.jsx",
+      "public/models/chaitag.glb",
+      "public/models/textures/band.jpg"
+    ],
     "additionalFiles": []
   },
   {
@@ -26,7 +30,7 @@
     ],
     "types": ["react", "nextjs"],
     "devDependencies": [],
-    "files": ["/lib/components/chai/team-tag.jsx"],
+    "files": ["src/lib/components/chai/team-tag.jsx"],
     "additionalFiles": []
   },
   {
@@ -41,7 +45,7 @@
     ],
     "types": ["react", "nextjs"],
     "devDependencies": [],
-    "files": ["/lib/components/chai/tag-user.jsx"],
+    "files": ["src/lib/components/chai/tag-user.jsx"],
     "additionalFiles": []
   }
 ]
