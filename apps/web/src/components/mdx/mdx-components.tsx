@@ -13,6 +13,7 @@ import { ComponentSourcej } from "../component-sourcejs";
 import { Alert } from "../ui/alert";
 import LinkPreview from "../link-preview";
 import FileDownload from "../file-download";
+import CopyComponent from "../copy-component";
 
 export const Link = ({
   className,
@@ -136,6 +137,9 @@ export const components: React.ComponentPropsWithoutRef<typeof MDXRemote>["compo
   ),
   LinkPreview :(props: { href: string; children: React.ReactNode }) =>(
     <LinkPreview {...props}  />
+  ),
+  CopyComponent :(props: { component: string; children: React.ReactNode }) =>(
+    <CopyComponent {...props}  />
   ),
   FileDownload :(props: { href: string; children: React.ReactNode }) =>(
     <FileDownload {...props}  />
