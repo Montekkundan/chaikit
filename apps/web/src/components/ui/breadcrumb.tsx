@@ -42,7 +42,8 @@ const Breadcrumb = ({ children, className, style, icon = null, ...props }: Bread
 type BreadcrumbItemProps = AriaBreadcrumbProps;
 const BreadcrumbItem = ({ className, ...props }: BreadcrumbItemProps) => {
   const { item } = breadcrumbsStyles();
-  return <AriaBreadcrumb {...props} className={cn(item, className)} />;
+  // @ts-ignore
+  return <AriaBreadcrumb {...props} className={cn(item({ className }))} />;
 };
 
 interface BreadcrumbLinkProps extends Omit<AriaLinkProps, "className"> {

@@ -42,6 +42,12 @@ const docsConfig: DocsConfig = {
             { title: "Tag", href: "/components/animations/tag" },
           ]
         },
+        {
+          title: "Elements",
+          items: [
+            { title: "Button", href: "/components/elements/button" },
+          ]
+        },
       ],
     },
     {

@@ -17,4 +17,8 @@ export const previews = {
       component: dynamic(() => import("@/lib/demos/components/chai/animations/dynamic/tag-user"), { ssr: false }),
       code : [{"title":"tag-user.tsx","code":"\"use client\";\nimport React from \"react\";\n\nimport TagUser from \"@/lib/components/chai/tag-user\";\n\nexport default function TagUserdemo() {\n  return (\n    <div className=\"items-center justify-center h-full dark:bg-black bg-white relative w-full\">\n    <TagUser/>\n  </div>  \n  );\n}\n"}]
     },
+    "demos/components/chai/elements/button": {
+      component: React.lazy<React.FC>(() => import("@/lib/demos/components/chai/elements/button")),
+      code : [{"title":"button.tsx","code":"export default function Button() {\n    return (\n      <>\n        <button\n          type=\"button\"\n          className=\"rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600\"\n        >\n          Button text\n        </button>\n      </>\n    )\n  }\n  "}]
+    },
   }

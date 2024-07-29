@@ -13,19 +13,27 @@ export const getComponentSource = (relativePath: string) => {
         const filePath = path.join(fullPath, file);
         const fileContent = fs.readFileSync(filePath, "utf-8");
         return {
-          title: file === "index.jsx" ? `${path.basename(fullPath)}.jsx` : file,
+          title: file === "index.tsx" ? `${path.basename(fullPath)}.tsx` : file,
           code: fileContent,
         };
       })
-      .sort((a) => (a.title === `${path.basename(fullPath)}.jsx` ? -1 : 1));
+      .sort((a) => (a.title === `${path.basename(fullPath)}.tsx` ? -1 : 1));
   } else {
     // if file, get file content and name
-    if (!fs.existsSync(`${fullPath}.jsx`) && !fs.existsSync(`${fullPath}.js`)) {
-      console.log(`${fullPath}.js(x) does not exist`);
+    if (
+      !fs.existsSync(`${fullPath}.tsx`) &&
+      !fs.existsSync(`${fullPath}.jsx`) &&
+      !fs.existsSync(`${fullPath}.js`)
+    ) {
+      console.log(`${fullPath}.ts(x), .js(x) does not exist`);
       return [];
     }
     // get file extension
-    const fileExt = fs.existsSync(`${fullPath}.js`) ? "js" : "jsx";
+    const fileExt = fs.existsSync(`${fullPath}.tsx`)
+      ? "tsx"
+      : fs.existsSync(`${fullPath}.jsx`)
+      ? "jsx"
+      : "js";
     const fileContent = fs.readFileSync(`${fullPath}.${fileExt}`, "utf-8");
     const fileName = path.basename(fullPath);
     code = [{ title: `${fileName}.${fileExt}`, code: fileContent }];

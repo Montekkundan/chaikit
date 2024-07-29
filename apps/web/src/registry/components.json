@@ -2,12 +2,12 @@
   {
     "name": "tag",
     "dependencies": [
-        "@react-three/fiber",
-        "three",
-        "@react-three/drei",
-        "@react-three/rapier",
-        "meshline",
-        "leva"
+      "@react-three/fiber",
+      "three",
+      "@react-three/drei",
+      "@react-three/rapier",
+      "meshline",
+      "leva"
     ],
     "types": ["react", "nextjs"],
     "devDependencies": [],
@@ -21,31 +21,39 @@
   {
     "name": "tagteam",
     "dependencies": [
-        "@react-three/fiber",
-        "three",
-        "@react-three/drei",
-        "@react-three/rapier",
-        "meshline",
-        "leva"
+      "@react-three/fiber",
+      "three",
+      "@react-three/drei",
+      "@react-three/rapier",
+      "meshline",
+      "leva"
     ],
     "types": ["react", "nextjs"],
     "devDependencies": [],
-    "files": ["src/lib/components/chai/team-tag.jsx"],
+    "files": [
+      "src/lib/components/chai/team-tag.jsx",
+      "public/models/chaitag.glb",
+      "public/models/textures/band.jpg"
+    ],
     "additionalFiles": []
   },
   {
     "name": "taguser",
     "dependencies": [
-        "@react-three/fiber",
-        "three",
-        "@react-three/drei",
-        "@react-three/rapier",
-        "meshline",
-        "leva"
+      "@react-three/fiber",
+      "three",
+      "@react-three/drei",
+      "@react-three/rapier",
+      "meshline",
+      "leva"
     ],
     "types": ["react", "nextjs"],
     "devDependencies": [],
-    "files": ["src/lib/components/chai/tag-user.jsx"],
+    "files": [
+      "src/lib/components/chai/tag-user.jsx",
+      "public/models/chaitag.glb",
+      "public/models/textures/band.jpg"
+    ],
     "additionalFiles": []
   }
 ]
